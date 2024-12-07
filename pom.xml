@@ -58,13 +58,13 @@
     <!-- https://search.maven.org/search?q=g:org.apache.poi -->
     <version.org.apache.poi>5.3.0</version.org.apache.poi>
     <!-- https://docs.spring.io/spring-boot/appendix/dependency-versions/coordinates.html -->
-    <version.org.springframework>6.1.13</version.org.springframework>
+    <version.org.springframework>6.2.0</version.org.springframework>
     <!-- https://search.maven.org/search?q=g:org.springframework.boot -->
-    <version.org.springframework.boot>3.3.4</version.org.springframework.boot>
+    <version.org.springframework.boot>3.4.0</version.org.springframework.boot>
     <!-- https://spring.io/projects/spring-cloud -->
     <!-- https://github.com/spring-cloud/spring-cloud-release/wiki -->
-    <!-- https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2023.0-Release-Notes -->
-    <version.org.springframework.cloud>2023.0.3</version.org.springframework.cloud>
+    <!-- https://github.com/spring-cloud/spring-cloud-release/wiki/Spring-Cloud-2024.0-Release-Notes -->
+    <version.org.springframework.cloud>2024.0.0</version.org.springframework.cloud>
   </properties>
 
   <dependencyManagement>
@@ -82,7 +82,7 @@
         <artifactId>springdoc-openapi</artifactId>
         <!-- https://search.maven.org/search?q=g:org.springdoc -->
         <!-- https://search.maven.org/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui -->
-        <version>2.6.0</version>
+        <version>2.7.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -165,7 +165,7 @@
     <dependency>
       <groupId>nl.jqno.equalsverifier</groupId>
       <artifactId>equalsverifier-nodep</artifactId>
-      <version>3.16.2</version>
+      <version>3.17.5</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -187,7 +187,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.34</version>
+      <version>1.18.36</version>
       <scope>provided</scope>
     </dependency>
     <dependency><!-- https://search.maven.org/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui -->
@@ -345,6 +345,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <!-- https://central.sonatype.com/artifact/org.apache.maven.plugins/maven-compiler-plugin/versions -->
         <version>3.13.0</version>
         <configuration>
           <compilerArgs>
@@ -355,7 +356,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <!-- https://search.maven.org/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+        <!-- https://central.sonatype.com/artifact/org.apache.maven.plugins/maven-jar-plugin/versions -->
         <version>3.4.2</version>
         <configuration>
           <archive>
