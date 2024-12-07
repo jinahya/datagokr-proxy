@@ -79,14 +79,16 @@ sequenceDiagram
 
 최신의 LTS(`21`) 가 필요하다.
 
-```commandline
-$ grep '<maven.compiler.' pom.xml
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-    <maven.compiler.release>${maven.compiler.target}</maven.compiler.release>
-    <maven.compiler.testSource>${maven.compiler.source}</maven.compiler.testSource>
-    <maven.compiler.testTarget>${maven.compiler.testSource}</maven.compiler.testTarget>
-    <maven.compiler.testRelease>${maven.compiler.testTarget}</maven.compiler.testRelease>
+```xml
+<!-- pom.xml://properties -->
+<properties>
+  <maven.compiler.source>21</maven.compiler.source>
+  <maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
+  <maven.compiler.release>${maven.compiler.target}</maven.compiler.release>
+  <maven.compiler.testSource>${maven.compiler.source}</maven.compiler.testSource>
+  <maven.compiler.testTarget>${maven.compiler.testSource}</maven.compiler.testTarget>
+  <maven.compiler.testRelease>${maven.compiler.testTarget}</maven.compiler.testRelease>
+</properties>
 ```
 
 ### How to test
