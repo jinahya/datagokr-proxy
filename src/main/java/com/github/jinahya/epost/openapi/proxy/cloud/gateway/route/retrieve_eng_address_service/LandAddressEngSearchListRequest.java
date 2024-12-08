@@ -48,18 +48,19 @@ public class LandAddressEngSearchListRequest
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    private static final BiConsumer<? super LandAddressEngSearchListRequest, ? super UriBuilder> URI_BUILDER = (s, b) -> {
-        b.path(_RetrieveEngAddressServiceConstants.REQUEST_URI_GET_LAND_ADDRESS_SEARCH)
-                .queryParam(_RetrieveEngAddressServiceConstants.PARAM_STATE_ENG_NAME, s.stateEngName)
-                .queryParam(_RetrieveEngAddressServiceConstants.PARAM_CITY_ENG_NAME, s.cityEngName)
-                .queryParamIfPresent(_RetrieveEngAddressServiceConstants.PARAM_DISTRICT_ENG_FIRST_NAME,
-                                     Optional.ofNullable(s.districtEngFirstName))
-                .queryParam(_RetrieveEngAddressServiceConstants.PARAM_DISTRICT_ENG_NAME, s.districtEngName)
-                .queryParamIfPresent(_RetrieveEngAddressServiceConstants.PARAM_KEYWORD,
-                                     Optional.ofNullable(s.keyword))
-                .queryParam(_RouteConstants.REQUEST_PARAM_COUNT_PER_PAGE, s.countPerPage)
-                .queryParam(_RouteConstants.REQUEST_PARAM_CURRENT_PAGE, s.currentPage);
-    };
+    private static final BiConsumer<? super LandAddressEngSearchListRequest, ? super UriBuilder> URI_BUILDER =
+            (s, b) -> {
+                b.path(_RetrieveEngAddressServiceConstants.REQUEST_URI_GET_LAND_ADDRESS_SEARCH)
+                        .queryParam(_RetrieveEngAddressServiceConstants.PARAM_STATE_ENG_NAME, s.stateEngName)
+                        .queryParam(_RetrieveEngAddressServiceConstants.PARAM_CITY_ENG_NAME, s.cityEngName)
+                        .queryParamIfPresent(_RetrieveEngAddressServiceConstants.PARAM_DISTRICT_ENG_FIRST_NAME,
+                                             Optional.ofNullable(s.districtEngFirstName))
+                        .queryParam(_RetrieveEngAddressServiceConstants.PARAM_DISTRICT_ENG_NAME, s.districtEngName)
+                        .queryParamIfPresent(_RetrieveEngAddressServiceConstants.PARAM_KEYWORD,
+                                             Optional.ofNullable(s.keyword))
+                        .queryParam(_RouteConstants.REQUEST_PARAM_COUNT_PER_PAGE, s.countPerPage)
+                        .queryParam(_RouteConstants.REQUEST_PARAM_CURRENT_PAGE, s.currentPage);
+            };
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 

@@ -26,8 +26,9 @@ class SwaggerConfig {
 //                .filter(routeDefinition -> routeDefinition.getId().matches(".*-service"))
                 .forEach(routeDefinition -> {
                     String name = routeDefinition.getId().replaceAll("-service", "");
-                    AbstractSwaggerUiConfigProperties.SwaggerUrl swaggerUrl = new AbstractSwaggerUiConfigProperties.SwaggerUrl(
-                            name, Constants.DEFAULT_API_DOCS_URL + "/" + name, null);
+                    AbstractSwaggerUiConfigProperties.SwaggerUrl swaggerUrl =
+                            new AbstractSwaggerUiConfigProperties.SwaggerUrl(
+                                    name, Constants.DEFAULT_API_DOCS_URL + "/" + name, null);
                     urls.add(swaggerUrl);
                 });
         swaggerUiConfigParameters.setUrls(urls);
