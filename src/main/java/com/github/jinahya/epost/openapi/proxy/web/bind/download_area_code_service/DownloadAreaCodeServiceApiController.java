@@ -133,6 +133,16 @@ class DownloadAreaCodeServiceApiController
                 });
     }
 
+    /**
+     * Reads(downloads) the {@link AreaCodeInfoResponse#getFile() file} content of the response for specified value of
+     * {@link DwldSe}.
+     *
+     * @param exchange a server web exchange.
+     * @param dwldSe   the value of {@link DwldSe} to download.
+     * @param attach   a flag for using {@value HttpHeaders#CONTENT_DISPOSITION} header with {@code attachment}.
+     * @param filename a value for the {@code filename} element of the {@value HttpHeaders#CONTENT_DISPOSITION} header.
+     * @return a flux of data buffers.
+     */
     @GetMapping(
             path = {
                     _DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT
