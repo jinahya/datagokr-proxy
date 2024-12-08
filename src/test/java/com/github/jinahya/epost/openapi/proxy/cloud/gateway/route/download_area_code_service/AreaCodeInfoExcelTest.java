@@ -42,19 +42,24 @@ import static org.mockito.Mockito.verify;
 class AreaCodeInfoExcelTest {
 
     @BeforeAll
-    static void beforeAll() {
+    static void doBeforeAll() {
         System.setProperty("java.awt.headless", "true");
     }
 
     @AfterAll
-    static void afterAll() {
-        try {
-            final var desktop = Desktop.getDesktop();
-            final var directory = new File(
-                    AreaCodeInfoUtils_Test.class.getResource("__get.sh").toURI()).getParentFile();
-            desktop.open(directory);
-        } catch (final Exception e) {
-            log.error("failed to open directory", e);
+    static void doAfterAll() {
+        if (false) {
+            try {
+                final var desktop = Desktop.getDesktop();
+                final var url = AreaCodeInfoUtils_Test.class.getResource("__get.sh");
+                if (url == null) {
+                    return;
+                }
+                final var directory = new File(url.toURI()).getParentFile();
+                desktop.open(directory);
+            } catch (final Exception e) {
+                log.error("failed to open directory", e);
+            }
         }
     }
 
