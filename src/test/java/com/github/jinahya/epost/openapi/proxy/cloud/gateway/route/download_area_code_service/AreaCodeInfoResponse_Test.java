@@ -8,10 +8,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-class AreaCodeInfoResponseTest
+class AreaCodeInfoResponse_Test
         extends AbstractPairedResponseTypeTest<AreaCodeInfoResponse, AreaCodeInfoRequest> {
 
-    AreaCodeInfoResponseTest() {
+    AreaCodeInfoResponse_Test() {
         super(AreaCodeInfoResponse.class);
     }
 

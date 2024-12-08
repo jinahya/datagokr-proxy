@@ -48,6 +48,8 @@
     <maven.compiler.testSource>${maven.compiler.source}</maven.compiler.testSource>
     <maven.compiler.testTarget>${maven.compiler.testSource}</maven.compiler.testTarget>
     <maven.compiler.testRelease>${maven.compiler.testTarget}</maven.compiler.testRelease>
+    <!-- https://dzone.com/articles/using-lombok-library-witk-jdk-23 -->
+    <maven.compiler.proc>full</maven.compiler.proc>
     <sonar.organization>jinahya-github</sonar.organization>
     <sonar.projectKey>jinahya_epost-openapi-proxy</sonar.projectKey>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>

@@ -10,10 +10,10 @@ import org.junit.jupiter.params.provider.EnumSource;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class AreaCodeInfoRequestTest
+class AreaCodeInfoRequest_Test
         extends AbstractPairedRequestTypeTest<AreaCodeInfoRequest, AreaCodeInfoResponse> {
 
-    AreaCodeInfoRequestTest() {
+    AreaCodeInfoRequest_Test() {
         super(AreaCodeInfoRequest.class, AreaCodeInfoResponse.class);
     }
 

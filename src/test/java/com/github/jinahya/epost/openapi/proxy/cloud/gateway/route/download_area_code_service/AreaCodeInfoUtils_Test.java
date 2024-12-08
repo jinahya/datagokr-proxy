@@ -30,20 +30,20 @@ import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @Slf4j
 // https://github.com/junit-team/junit5/issues/1477
-class AreaCodeInfoUtilsTest {
+class AreaCodeInfoUtils_Test {
 
     private static Stream<String> getResNameStream() {
         return Stream.of(
-                "zipcode_DB.zip",
-                "areacd_chgaddr_DB.zip",
-                "areacd_rangeaddr_DB.zip",
-                "areacd_pobox_DB.zip"
+                "_zipcode_DB.zip",
+                "_areacd_chgaddr_DB.zip",
+                "_areacd_rangeaddr_DB.zip",
+                "_areacd_pobox_DB.zip"
         );
     }
 
     private static Stream<URL> getResourceUrlStream() {
         return getResNameStream()
-                .map(AreaCodeInfoUtilsTest.class::getResource)
+                .map(AreaCodeInfoUtils_Test.class::getResource)
                 .filter(Objects::nonNull);
     }
 
@@ -86,13 +86,31 @@ class AreaCodeInfoUtilsTest {
                 });
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
-    @Tag(_TestConstants.TAB_LONG_RUNNING)
+    // -------------------------------------------------------------------------------------------------------- download
+    @Tag(_TestConstants.TAG_LONG_RUNNING)
     @Disabled("takes to long, baby")
     @DisplayName("extract(stream, consumer)")
-    @MethodSource({
-            "getResNameStream"
-    })
+    @MethodSource({"getResNameStream"})
+    @ParameterizedTest
+    void download__(final String resName) throws IOException {
+        try (var resource = getClass().getResourceAsStream(resName)) {
+            assumeTrue(resource != null, () -> "null resource for " + resource);
+            final var flags = new HashMap<String, Boolean>();
+            AreaCodeInfoUtils.extract(
+                    resource,
+                    (n, m) -> {
+                        if (flags.compute(n, (k, v) -> v == null)) {
+                            log.debug("n: {}, m: {}", n, m);
+                        }
+                    });
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    @Tag(_TestConstants.TAG_LONG_RUNNING)
+    @Disabled("takes to long, baby")
+    @DisplayName("extract(stream, consumer)")
+    @MethodSource({"getResNameStream"})
     @ParameterizedTest
     void extract__(final String resName) throws IOException {
         try (var resource = getClass().getResourceAsStream(resName)) {
@@ -109,10 +127,8 @@ class AreaCodeInfoUtilsTest {
     }
 
     @Disabled("takes to long, baby")
-    @DisplayName("extract(file, file)")
-    @MethodSource({
-            "getResourceFileStream"
-    })
+    @DisplayName("extract(source, target)")
+    @MethodSource({"getResourceFileStream"})
     @ParameterizedTest
     void extract(final File source, @TempDir final File target) throws IOException {
         AreaCodeInfoUtils.extract(source, target);

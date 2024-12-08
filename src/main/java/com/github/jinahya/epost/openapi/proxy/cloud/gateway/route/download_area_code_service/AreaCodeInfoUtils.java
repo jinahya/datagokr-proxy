@@ -1,5 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service;
 
+import com.github.jinahya.epost.openapi.proxy._misc.net.HttpURLConnectionUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -7,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -36,11 +38,37 @@ public final class AreaCodeInfoUtils {
 
     static final String DELIMITER = "\\|";
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------------------- download
 
-    public static void extract(final InputStream entryStream,
-                               final Consumer<? super String[]> headerConsumer,
-                               final Consumer<? super String[]> rowConsumer)
+    /**
+     * Downloads specified response's {@link AreaCodeInfoResponse#getFile() file} to specified file.
+     *
+     * @param response the response whose {@link AreaCodeInfoResponse#getFile() file} is downloaded.
+     * @param target   the target file to which {@link AreaCodeInfoResponse#getFile() response.file} is downloaded.
+     * @return the number of bytes downloaded to {@code target}.
+     */
+    public static long downloadFile(final AreaCodeInfoResponse response, final File target)
+            throws IOException {
+        Objects.requireNonNull(response, "response is null");
+        final var header = response.getCmmMsgHeader();
+        if (header == null) {
+            throw new IllegalArgumentException("response.cmmMsgHeader is null: " + response);
+        }
+        if (!header.isSucceeded()) {
+            throw new IllegalArgumentException("response.cmmMsgHeader is not succeeded: " + header);
+        }
+        final var responseFile = response.getFile();
+        if (responseFile == null) {
+            throw new IllegalArgumentException("response.file is null");
+        }
+        Objects.requireNonNull(target, "target is null");
+        final var url = URI.create(responseFile).toURL();
+        return HttpURLConnectionUtils.get(url, target);
+    }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    static void extract(final InputStream entryStream, final Consumer<? super String[]> headerConsumer,
+                        final Consumer<? super String[]> rowConsumer)
             throws IOException {
         Objects.requireNonNull(entryStream, "entryStream is null");
         Objects.requireNonNull(headerConsumer, "headerConsumer is null");
@@ -58,8 +86,8 @@ public final class AreaCodeInfoUtils {
 
     private static void extract(final InputStream stream, final Consumer<? super Map<String, String>> consumer)
             throws IOException {
-        Objects.requireNonNull(stream, "stream is null");
-        Objects.requireNonNull(consumer, "consumer is null");
+        assert stream != null;
+        assert consumer != null;
         final var reader = new BufferedReader(new InputStreamReader(stream));
         final var first = reader.readLine();
         if (first.isEmpty()) {
@@ -156,8 +184,7 @@ public final class AreaCodeInfoUtils {
      * @param target the target directory into which the {@code source} is extracted.
      * @throws IOException if an I/O error occurs.
      */
-    public static void extract(final File source, final File target)
-            throws IOException {
+    public static void extract(final File source, final File target) throws IOException {
         extract(source, target, n -> true);
     }
 

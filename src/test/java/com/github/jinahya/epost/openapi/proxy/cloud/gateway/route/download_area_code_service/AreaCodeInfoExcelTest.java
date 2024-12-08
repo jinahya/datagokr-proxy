@@ -45,7 +45,7 @@ class AreaCodeInfoExcelTest {
     static void afterAll() {
         try {
             final var desktop = Desktop.getDesktop();
-            final var directory = new File(AreaCodeInfoUtilsTest.class.getResource("_get.sh").toURI()).getParentFile();
+            final var directory = new File(AreaCodeInfoUtils_Test.class.getResource("__get.sh").toURI()).getParentFile();
             desktop.open(directory);
         } catch (final Exception e) {
             log.error("failed to open directory", e);
@@ -54,7 +54,7 @@ class AreaCodeInfoExcelTest {
 
     // -----------------------------------------------------------------------------------------------------------------
     private static Stream<Arguments> getResourceFileArgumentsStream() {
-        return AreaCodeInfoUtilsTest.getResourceFileStream()
+        return AreaCodeInfoUtils_Test.getResourceFileStream()
                 .map(f -> Arguments.of(Named.of(f.getName(), f)));
     }
 

@@ -2,7 +2,7 @@ package com.github.jinahya.epost.openapi.proxy;
 
 public final class _TestConstants {
 
-    public static final String TAB_LONG_RUNNING = "long-running";
+    public static final String TAG_LONG_RUNNING = "long-running";
 
     public static final String ENVIRONMENT_VARIABLE_SERVICE_KEY = "SERVICE_KEY";
 

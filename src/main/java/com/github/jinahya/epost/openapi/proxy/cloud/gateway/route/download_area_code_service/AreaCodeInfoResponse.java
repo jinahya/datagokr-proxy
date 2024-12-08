@@ -8,20 +8,15 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serial;
+import java.util.Objects;
 
 @XmlRootElement(name = AreaCodeInfoResponse.ROOT_NAME)
 @XmlAccessorType(XmlAccessType.FIELD)
-@Setter
-@Getter
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @Slf4j
 public class AreaCodeInfoResponse
         extends AbstractPairedResponseType<AreaCodeInfoResponse, AreaCodeInfoRequest> {
@@ -39,6 +34,32 @@ public class AreaCodeInfoResponse
         super(AreaCodeInfoRequest.class);
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
+
+    @Override
+    public String toString() {
+        return super.toString() + '{' +
+                "file='" + file + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        final var that = (AreaCodeInfoResponse) obj;
+        return Objects.equals(file, that.file);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), file);
+    }
+
     // ---------------------------------------------------------------------------------------------------- cmmMsgHeader
 
     // --------------------------------------------------------------------------------------------------------- wrapped
@@ -50,6 +71,27 @@ public class AreaCodeInfoResponse
     }
 
     // ------------------------------------------------------------------------------------------------------------ file
+
+    /**
+     * Returns current value of {@code file} property.
+     *
+     * @return current value of the {@code file} property.
+     */
+    public String getFile() {
+        return file;
+    }
+
+    /**
+     * Downloads this response's {@code file} to specified file.
+     *
+     * @param target the target file to which this response's {@code file} is downloaded.
+     * @return the number of bytes downloaded to the {@code target}.
+     * @see AreaCodeInfoUtils#downloadFile(AreaCodeInfoResponse, File)
+     */
+    public long downloadFile(final File target) throws IOException {
+        Objects.requireNonNull(target, "target is null");
+        return AreaCodeInfoUtils.downloadFile(this, target);
+    }
 
     // -----------------------------------------------------------------------------------------------------------------
     @NotBlank
