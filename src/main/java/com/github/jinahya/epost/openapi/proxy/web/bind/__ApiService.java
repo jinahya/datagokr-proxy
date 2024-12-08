@@ -24,7 +24,7 @@ import java.util.Objects;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Slf4j
 @SuppressWarnings({
-        "java:S101" // class _Api...
+        "java:S101" // Class names should comply with a naming convention
 })
 // https://github.com/spring-projects/spring-boot/issues/41862
 abstract class __ApiService {

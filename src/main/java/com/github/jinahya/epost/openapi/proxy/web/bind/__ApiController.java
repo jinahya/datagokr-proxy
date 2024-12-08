@@ -12,6 +12,7 @@ import java.util.function.Consumer;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Slf4j
 @SuppressWarnings({
+        "java;S101", // Class names should comply with a naming convention
         "java:S119"
 })
 // https://github.com/spring-projects/spring-boot/issues/41862

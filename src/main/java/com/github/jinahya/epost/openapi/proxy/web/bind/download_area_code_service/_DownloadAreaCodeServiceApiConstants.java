@@ -4,8 +4,8 @@ import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_
 import com.github.jinahya.epost.openapi.proxy.web.bind.__WebBindConstants;
 
 @SuppressWarnings({
-        "java:S101", // class _Api...
-        "java:S125" // ------- ....
+        "java:S101", // Class names should comply with a naming convention
+        "java:S125"  // Sections of code should not be commented out
 })
 final class _DownloadAreaCodeServiceApiConstants {
 

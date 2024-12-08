@@ -1,6 +1,7 @@
 package com.github.jinahya.epost.openapi.proxy.web.bind.download_area_code_service;
 
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest;
+import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest.DwldSe;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoResponse;
 import com.github.jinahya.epost.openapi.proxy.web.bind._ApiController;
 import com.github.jinahya.epost.openapi.proxy.web.reactive.function.client.WebClientUtils;
@@ -62,6 +63,13 @@ class DownloadAreaCodeServiceApiController
     }
 
     // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Reads all responses for all values {@link DwldSe} enum.
+     *
+     * @param exchange a server web exchange.
+     * @return a flux of all responses for all values of {@link DwldSe} enum.
+     */
     @ApiResponse(content = {
             @Content(schema = @Schema(implementation = AreaCodeInfoResponse.class))
     })
@@ -74,13 +82,21 @@ class DownloadAreaCodeServiceApiController
             }
     )
     Flux<EntityModel<AreaCodeInfoResponse>> readAreaCodeInfo(final ServerWebExchange exchange) {
-        return Flux.fromArray(AreaCodeInfoRequest.DwldSe.values())
-                .map(AreaCodeInfoRequest.DwldSe::value)
+        return Flux.fromArray(DwldSe.values())
+                .map(DwldSe::value)
                 .flatMapSequential(v -> service().exchange(AreaCodeInfoRequest.of(v)))
                 .map(this::model);
     }
 
     // -----------------------------------------------------------------------------------------------------------------
+
+    /**
+     * Reads a response for specified value of {@link DwldSe} enum.
+     *
+     * @param exchange a server web exchange.
+     * @param dwldSe   the value of {@link DwldSe} enum for the response.
+     * @return a mono of the responses for the {@code dwldSe}.
+     */
     @ApiResponse(content = {
             @Content(schema = @Schema(implementation = AreaCodeInfoResponse.class))
     })

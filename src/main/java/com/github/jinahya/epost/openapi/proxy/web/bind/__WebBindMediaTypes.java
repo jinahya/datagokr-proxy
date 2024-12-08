@@ -1,5 +1,8 @@
 package com.github.jinahya.epost.openapi.proxy.web.bind;
 
+@SuppressWarnings({
+        "java:S101" // Class names should comply with a naming convention
+})
 public final class __WebBindMediaTypes {
 
     // -----------------------------------------------------------------------------------------------------------------
