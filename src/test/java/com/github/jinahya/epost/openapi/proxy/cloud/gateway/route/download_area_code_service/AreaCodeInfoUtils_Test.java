@@ -25,6 +25,7 @@ import java.util.stream.StreamSupport;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
@@ -86,26 +87,6 @@ class AreaCodeInfoUtils_Test {
                 });
     }
 
-    // -------------------------------------------------------------------------------------------------------- download
-    @Tag(_TestConstants.TAG_LONG_RUNNING)
-    @Disabled("takes to long, baby")
-    @DisplayName("extract(stream, consumer)")
-    @MethodSource({"getResNameStream"})
-    @ParameterizedTest
-    void download__(final String resName) throws IOException {
-        try (var resource = getClass().getResourceAsStream(resName)) {
-            assumeTrue(resource != null, () -> "null resource for " + resource);
-            final var flags = new HashMap<String, Boolean>();
-            AreaCodeInfoUtils.extract(
-                    resource,
-                    (n, m) -> {
-                        if (flags.compute(n, (k, v) -> v == null)) {
-                            log.debug("n: {}, m: {}", n, m);
-                        }
-                    });
-        }
-    }
-
     // -----------------------------------------------------------------------------------------------------------------
     @Tag(_TestConstants.TAG_LONG_RUNNING)
     @Disabled("takes to long, baby")
@@ -114,7 +95,7 @@ class AreaCodeInfoUtils_Test {
     @ParameterizedTest
     void extract__(final String resName) throws IOException {
         try (var resource = getClass().getResourceAsStream(resName)) {
-            assumeTrue(resource != null, () -> "null resource for " + resource);
+            assertThat(resource).isNotNull();
             final var flags = new HashMap<String, Boolean>();
             AreaCodeInfoUtils.extract(
                     resource,

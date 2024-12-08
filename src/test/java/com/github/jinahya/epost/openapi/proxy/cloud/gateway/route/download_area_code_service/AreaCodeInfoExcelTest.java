@@ -1,5 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service;
 
+import com.github.jinahya.epost.openapi.proxy._TestConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.BuiltinFormats;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Named;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -23,6 +25,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 import java.util.zip.ZipFile;
@@ -31,6 +35,7 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
+@Tag(_TestConstants.TAG_LONG_RUNNING)
 @Disabled("takes too long")
 @Slf4j
 // https://poi.apache.org/components/spreadsheet/how-to.html#sxssf
@@ -38,14 +43,15 @@ class AreaCodeInfoExcelTest {
 
     @BeforeAll
     static void beforeAll() {
-//        System.setProperty("java.awt.headless", "true");
+        System.setProperty("java.awt.headless", "true");
     }
 
     @AfterAll
     static void afterAll() {
         try {
             final var desktop = Desktop.getDesktop();
-            final var directory = new File(AreaCodeInfoUtils_Test.class.getResource("__get.sh").toURI()).getParentFile();
+            final var directory = new File(
+                    AreaCodeInfoUtils_Test.class.getResource("__get.sh").toURI()).getParentFile();
             desktop.open(directory);
         } catch (final Exception e) {
             log.error("failed to open directory", e);
@@ -58,7 +64,7 @@ class AreaCodeInfoExcelTest {
                 .map(f -> Arguments.of(Named.of(f.getName(), f)));
     }
 
-    private void __(final InputStream source, final SXSSFSheet sheet, @Nullable final CellStyle cellStyle)
+    private void entryToSheet(final InputStream source, final SXSSFSheet sheet, @Nullable final CellStyle cellStyle)
             throws IOException {
         final var colcnt = new AtomicInteger();
         final var rownum = new AtomicInteger();
@@ -106,14 +112,12 @@ class AreaCodeInfoExcelTest {
         }
     }
 
-    @MethodSource({
-            "getResourceFileArgumentsStream"
-    })
+    @MethodSource({"getResourceFileArgumentsStream"})
     @ParameterizedTest
-    void __WorkbookPerZip(final File source) throws IOException {
+    void __WorkbookPerZip(final File source) throws IOException, InterruptedException {
         try (var workbook = new SXSSFWorkbook(1);
              var zipFile = new ZipFile(source, AreaCodeInfoUtils.CHARSET)) {
-            workbook.setCompressTempFiles(true);
+//            workbook.setCompressTempFiles(true);
             final var cellStyle = workbook.createCellStyle();
             cellStyle.setDataFormat((short) BuiltinFormats.getBuiltinFormat("@"));
             // https://poi.apache.org/apidocs/dev/org/apache/poi/ss/usermodel/BuiltinFormats.html
@@ -124,11 +128,17 @@ class AreaCodeInfoExcelTest {
                     if (entry.isDirectory() || !entry.getName().endsWith(".txt")) {
                         continue;
                     }
-                    var name = entry.getName();
-                    name = name.substring(name.lastIndexOf('/') + 1, name.length() - 4);
+                    final String name;
+                    {
+                        var n = entry.getName();
+                        n = n.substring(n.lastIndexOf('/') + 1, n.length() - 4);
+                        name = n;
+                    }
                     log.debug("name: {}", name);
                     final var sheet = workbook.createSheet(name);
-                    __(zipFile.getInputStream(entry), sheet, cellStyle);
+                    try (var stream = zipFile.getInputStream(entry)) {
+                        entryToSheet(stream, sheet, cellStyle);
+                    }
                 }
                 final File target = new File(source.getParent(), source.getName() + ".xlsx");
                 log.debug("target.path: {}", target.getAbsolutePath());
@@ -144,11 +154,10 @@ class AreaCodeInfoExcelTest {
         }
     }
 
-    @MethodSource({
-            "getResourceFileArgumentsStream"
-    })
+    @Disabled
+    @MethodSource({"getResourceFileArgumentsStream"})
     @ParameterizedTest
-    void __WorkbookPerEntry(final File source) throws IOException {
+    void __WorkbookPerEntry_Sequential(final File source) throws IOException {
         try (var zipFile = new ZipFile(source, AreaCodeInfoUtils.CHARSET)) {
             for (var e = zipFile.entries(); e.hasMoreElements(); ) {
                 final var entry = e.nextElement();
@@ -164,7 +173,7 @@ class AreaCodeInfoExcelTest {
                     cellStyle.setDataFormat((short) BuiltinFormats.getBuiltinFormat("@"));
                     try {
                         final var sheet = workbook.createSheet(name);
-                        __(zipFile.getInputStream(entry), sheet, cellStyle);
+                        entryToSheet(zipFile.getInputStream(entry), sheet, cellStyle);
                         final File target = new File(source.getParent(), source.getName() + '_' + name + ".xlsx");
                         log.debug("target.path: {}", target.getAbsolutePath());
                         try (var output = spy(new FileOutputStream(target))) {
@@ -177,6 +186,54 @@ class AreaCodeInfoExcelTest {
                         assert result;
                     }
                 }
+            }
+        }
+    }
+
+    @MethodSource({"getResourceFileArgumentsStream"})
+    @ParameterizedTest
+    void __WorkbookPerEntry_Concurrent(final File source) throws IOException, InterruptedException {
+        try (var zipFile = new ZipFile(source, AreaCodeInfoUtils.CHARSET);
+             var executor = Executors.newCachedThreadPool()) {
+            for (var e = zipFile.entries(); e.hasMoreElements(); ) {
+                final var entry = e.nextElement();
+                if (entry.isDirectory() || !entry.getName().endsWith(".txt")) {
+                    continue;
+                }
+                final String name;
+                {
+                    var n = entry.getName();
+                    n = n.substring(n.lastIndexOf('/') + 1, n.length() - 4);
+                    name = n;
+                }
+                log.debug("name: {}", name);
+                executor.execute(() -> {
+                    try (var workbook = new SXSSFWorkbook(1)) {
+                        workbook.setCompressTempFiles(true);
+                        final var cellStyle = workbook.createCellStyle();
+                        cellStyle.setDataFormat((short) BuiltinFormats.getBuiltinFormat("@"));
+                        try {
+                            final var sheet = workbook.createSheet(name);
+                            entryToSheet(zipFile.getInputStream(entry), sheet, cellStyle);
+                            final var target = new File(source.getParent(), source.getName() + '_' + name + ".xlsx");
+                            log.debug("target.path: {}", target.getAbsolutePath());
+                            try (var output = spy(new FileOutputStream(target))) {
+                                workbook.write(output);
+                                verify(output, atLeast(1)).flush();
+                            }
+                            log.debug("target.size: {}", target.length());
+                        } finally {
+                            final var result = workbook.dispose(); // deprecated; // TODO: remove this try-finally
+                            assert result;
+                        }
+                    } catch (final IOException ioe) {
+                        throw new RuntimeException(ioe);
+                    }
+                });
+            }
+            executor.shutdown();
+            if (!executor.awaitTermination(60L, TimeUnit.MINUTES)) {
+                log.error("executor hasn't been terminated");
             }
         }
     }
