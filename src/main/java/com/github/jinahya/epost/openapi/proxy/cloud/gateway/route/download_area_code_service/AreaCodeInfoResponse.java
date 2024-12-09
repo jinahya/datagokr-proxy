@@ -70,7 +70,7 @@ public class AreaCodeInfoResponse
 
     // ---------------------------------------------------------------------------------------------------- cmmMsgHeader
 
-    // --------------------------------------------------------------------------------------------------------- wrapped
+    // --------------------------------------------------------------------------------------------------- super.wrapped
     @Schema(hidden = true)
     @JsonProperty(ROOT_NAME)
     @Override
@@ -78,7 +78,7 @@ public class AreaCodeInfoResponse
         return super.getWrapped();
     }
 
-    // ---------------------------------------------------------------------------------------------------------- dwldSe
+    // -------------------------------------------------------------------------------------------------- request.dwldSe
     @Nullable
     public String getRequestDwldSe() {
         return Optional.ofNullable(getRequestInstance())
@@ -102,6 +102,7 @@ public class AreaCodeInfoResponse
      *
      * @param target the target file to which this response's {@value #PROPERTY_NAME_FILE} is downloaded.
      * @return the number of bytes downloaded to the {@code target}.
+     * @throws IOException if an I/O error occurs.
      * @see AreaCodeInfoUtils#downloadFile(AreaCodeInfoResponse, File)
      */
     public long downloadFile(final File target) throws IOException {

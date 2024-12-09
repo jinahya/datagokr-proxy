@@ -119,7 +119,7 @@ class DownloadAreaCodeServiceApiController
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    private Publisher<? extends DataBuffer> getFileContentPublisher(final String dwldSe,
+    private Publisher<? extends DataBuffer> getFileContentPublisher(final DwldSe dwldSe,
                                                                     final Consumer<? super String> filenameConsumer) {
         return service().exchange(AreaCodeInfoRequest.of(dwldSe))
                 .map(AreaCodeInfoResponse::getFile)
@@ -156,7 +156,7 @@ class DownloadAreaCodeServiceApiController
     )
     Publisher<? extends DataBuffer> readAreaCodeInfoFileContent(
             final ServerWebExchange exchange,
-            @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final String dwldSe,
+            @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final DwldSe dwldSe,
             @RequestParam(value = _DownloadAreaCodeServiceApiConstants.PARAM_ATTACH, required = false)
             final Boolean attach,
             @RequestParam(value = _DownloadAreaCodeServiceApiConstants.PARAM_FILENAME, required = false)
