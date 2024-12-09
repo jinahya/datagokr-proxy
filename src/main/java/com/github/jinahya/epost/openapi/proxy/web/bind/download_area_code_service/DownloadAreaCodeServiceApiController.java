@@ -111,7 +111,7 @@ class DownloadAreaCodeServiceApiController
     )
     Mono<EntityModel<AreaCodeInfoResponse>> readAreaCodeInfo(
             final ServerWebExchange exchange,
-            @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final String dwldSe) {
+            @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final DwldSe dwldSe) {
         return service()
                 .exchange(AreaCodeInfoRequest.of(dwldSe))
                 .map(r -> r.cmmMsgHeader(null))

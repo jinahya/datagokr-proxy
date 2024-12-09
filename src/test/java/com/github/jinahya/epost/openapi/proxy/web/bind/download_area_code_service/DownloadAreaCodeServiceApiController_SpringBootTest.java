@@ -77,7 +77,9 @@ class DownloadAreaCodeServiceApiController_SpringBootTest
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
-     * Tests {@link DownloadAreaCodeServiceApiController#readAreaCodeInfo(ServerWebExchange, String)} method.
+     * Tests
+     * {@link DownloadAreaCodeServiceApiController#readAreaCodeInfo(ServerWebExchange, AreaCodeInfoRequest.DwldSe)}
+     * method.
      *
      * @param dwldSe the value for {@code dwldSe} parameter.
      */
@@ -93,7 +95,7 @@ class DownloadAreaCodeServiceApiController_SpringBootTest
         );
         // -------------------------------------------------------------------------------------------------------- when
         final var result = controllerInstance()
-                .readAreaCodeInfo(exchange, dwldSe.value())
+                .readAreaCodeInfo(exchange, dwldSe)
                 .switchIfEmpty(Mono.error(new RuntimeException("empty")));
         // -------------------------------------------------------------------------------------------------------- then
         result.doOnNext(this::validate)

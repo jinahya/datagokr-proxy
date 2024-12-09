@@ -13,6 +13,7 @@ import org.springframework.web.util.UriBuilder;
 
 import java.io.Serial;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
 @Setter
@@ -128,6 +129,11 @@ public class AreaCodeInfoRequest
     public static AreaCodeInfoRequest of(final String dwldSe) {
         return of(AreaCodeInfoRequest::new)
                 .dwldSe(dwldSe);
+    }
+
+    public static AreaCodeInfoRequest of(final DwldSe dwldSe) {
+        Objects.requireNonNull(dwldSe, "dwldSe is null");
+        return of(dwldSe.value());
     }
 
     // -----------------------------------------------------------------------------------------------------------------
