@@ -166,32 +166,58 @@ class DownloadAreaCodeServiceApiController
                 f -> {
                     // attach 가 true 이고 filename 혹은 f 가 present 할 경우,
                     // Content-Disposition: attachment; filename="v" 헤더를 붙인다.
-                    Optional.ofNullable(attach)
-                            .filter(Boolean::booleanValue)
-                            .flatMap(a -> {
-                                return Optional.ofNullable(filename)
-                                        .map(String::strip)
-                                        .filter(v -> !v.isBlank());
-                            })
-                            .or(() -> Optional.ofNullable(f))
-                            .ifPresent(fn -> {
-                                beforeCommit(exchange.getResponse(), r -> {
-                                    // https://stackoverflow.com/a/20933751/330457
-                                    // https://stackoverflow.com/q/93551/330457
-                                    final var charset = StandardCharsets.UTF_8;
-                                    final var encoded = URLEncoder.encode(fn, charset);
-                                    if (encoded.equals(fn)) {
-                                        r.getHeaders().setContentDisposition(
-                                                ContentDisposition.attachment().filename(encoded).build()
-                                        );
-                                    } else {
-                                        final var filename1 = "filename: \"" + dwldSe + ".zip\"";
-                                        final var filename2 = "filename*=" + charset.name() + "''" + encoded;
-                                        final var headerVal = "attachment; " + filename1 + "; " + filename2;
-                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
-                                    }
+                    if (attach != null && attach) {
+                        Optional.ofNullable(filename)
+                                .map(String::strip)
+                                .filter(v -> !v.isBlank())
+                                .or(() -> Optional.ofNullable(f).map(String::strip).filter(v -> !v.isBlank()))
+                                .ifPresent(v -> {
+                                    beforeCommit(exchange.getResponse(), r -> {
+                                        // https://stackoverflow.com/a/20933751/330457
+                                        // https://stackoverflow.com/q/93551/330457
+                                        final var encoded = URLEncoder.encode(v, StandardCharsets.UTF_8);
+                                        if (encoded.equals(v)) {
+                                            r.getHeaders().setContentDisposition(
+                                                    ContentDisposition.attachment().filename(encoded).build()
+                                            );
+                                        } else {
+                                            final var filename1 = "filename=\"" + dwldSe.value() + ".zip\"";
+                                            // uppercase 'UTF-8' doesn't work, at least, with Postman
+                                            final var filename2 = "filename*=utf-8''" + encoded; // uppercase UTF-8 doesn't work at least with Postman
+                                            final var headerVal = "attachment; " + filename1 + "; " + filename2;
+                                            r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
+                                        }
+                                    });
                                 });
-                            });
+                    }
+//                    // attach 가 true 이고 filename 혹은 f 가 present 할 경우,
+//                    // Content-Disposition: attachment; filename="v" 헤더를 붙인다.
+//                    Optional.ofNullable(attach)
+//                            .filter(Boolean::booleanValue)
+//                            .flatMap(a -> {
+//                                return Optional.ofNullable(filename)
+//                                        .map(String::strip)
+//                                        .filter(v -> !v.isBlank());
+//                            })
+//                            .or(() -> Optional.ofNullable(f))
+//                            .ifPresent(fn -> {
+//                                beforeCommit(exchange.getResponse(), r -> {
+//                                    // https://stackoverflow.com/a/20933751/330457
+//                                    // https://stackoverflow.com/q/93551/330457
+//                                    final var charset = StandardCharsets.UTF_8;
+//                                    final var encoded = URLEncoder.encode(fn, charset);
+//                                    if (encoded.equals(fn)) {
+//                                        r.getHeaders().setContentDisposition(
+//                                                ContentDisposition.attachment().filename(encoded).build()
+//                                        );
+//                                    } else {
+//                                        final var filename1 = "filename: \"" + dwldSe + ".zip\"";
+//                                        final var filename2 = "filename*=" + charset.name() + "''" + encoded;
+//                                        final var headerVal = "attachment; " + filename1 + "; " + filename2;
+//                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
+//                                    }
+//                                });
+//                            });
                 }
         );
     }
