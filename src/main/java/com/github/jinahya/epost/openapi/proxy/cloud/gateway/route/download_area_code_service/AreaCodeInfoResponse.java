@@ -9,11 +9,13 @@ import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.Nullable;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.Serial;
 import java.util.Objects;
+import java.util.Optional;
 
 @XmlRootElement(name = AreaCodeInfoResponse.ROOT_NAME)
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -74,6 +76,14 @@ public class AreaCodeInfoResponse
     @Override
     public AreaCodeInfoResponse getWrapped() {
         return super.getWrapped();
+    }
+
+    // ---------------------------------------------------------------------------------------------------------- dwldSe
+    @Nullable
+    public String getRequestDwldSe() {
+        return Optional.ofNullable(getRequestInstance())
+                .map(AreaCodeInfoRequest::getDwldSe)
+                .orElse(null);
     }
 
     // ------------------------------------------------------------------------------------------------------------ file
