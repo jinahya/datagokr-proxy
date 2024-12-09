@@ -162,7 +162,7 @@ class DownloadAreaCodeServiceApiController
                 dwldSe,
                 f -> {
                     // attach 가 true 이고 filename 혹은 f 가 present 할 경우,
-                    // Content-Disposition: attach; filename="v" 헤더를 붙인다.
+                    // Content-Disposition: attachment; filename="v" 헤더를 붙인다.
                     Optional.ofNullable(attach)
                             .filter(Boolean::booleanValue)
                             .flatMap(a -> {
@@ -171,18 +171,18 @@ class DownloadAreaCodeServiceApiController
                                         .filter(v -> !v.isBlank())
                                         .or(() -> Optional.ofNullable(f));
                             })
-                            .ifPresent(v -> {
+                            .ifPresent(fn -> {
                                 beforeCommit(exchange.getResponse(), r -> {
                                     // https://stackoverflow.com/a/20933751/330457
                                     // https://stackoverflow.com/q/93551/330457
-                                    final var w = URLEncoder.encode(v, StandardCharsets.UTF_8);
-                                    if (w.equals(v)) {
+                                    final var w = URLEncoder.encode(fn, StandardCharsets.UTF_8);
+                                    if (w.equals(fn)) {
                                         r.getHeaders().setContentDisposition(
-                                                ContentDisposition.attachment().filename(v).build()
+                                                ContentDisposition.attachment().filename(fn).build()
                                         );
                                     } else {
                                         final var x = "filename: " + dwldSe + ".zip; filename*=utf-8''" + w;
-                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, "attach; " + x);
+                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, "attachment; " + x);
                                     }
                                 });
                             });
