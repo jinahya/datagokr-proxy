@@ -80,7 +80,7 @@ public class AreaCodeInfoResponse
 
     // -------------------------------------------------------------------------------------------------- request.dwldSe
     @Nullable
-    public String getRequestDwldSe() {
+    public AreaCodeInfoRequest.DwldSe getRequestDwldSe() {
         return Optional.ofNullable(getRequestInstance())
                 .map(AreaCodeInfoRequest::getDwldSe)
                 .orElse(null);

@@ -48,11 +48,11 @@ class DownloadAreaCodeServiceApiController
         final var request = response.getRequestInstance();
         return List.of(
                 Link.of(UriComponentsBuilder.fromPath(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_DWLD_SE)
-                                .build(request.getDwldSe())
+                                .build(request.getDwldSe().value())
                                 .toString())
                         .withSelfRel(),
                 Link.of(UriComponentsBuilder.fromPath(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT)
-                                .build(request.getDwldSe())
+                                .build(request.getDwldSe().value())
                                 .toString())
                         .withRel(_DownloadAreaCodeServiceApiConstants.REL_FILE_CONTENT)
         );
@@ -84,7 +84,7 @@ class DownloadAreaCodeServiceApiController
     )
     Flux<EntityModel<AreaCodeInfoResponse>> readAreaCodeInfo(final ServerWebExchange exchange) {
         return Flux.fromArray(DwldSe.values())
-                .map(DwldSe::value)
+//                .map(DwldSe::value)
                 .flatMapSequential(v -> service().exchange(AreaCodeInfoRequest.of(v)))
                 .map(this::model);
     }

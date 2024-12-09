@@ -13,7 +13,6 @@ import org.springframework.web.util.UriBuilder;
 
 import java.io.Serial;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.function.BiConsumer;
 
 @Setter
@@ -120,26 +119,33 @@ public class AreaCodeInfoRequest
 
     // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
 
+//    /**
+//     * Creates a new instance with specified {@value #PROPERTY_DWLD_SE} property value.
+//     *
+//     * @param dwldSe the value for the {@value #PROPERTY_DWLD_SE} property.
+//     * @return a new instance with {@code dwldSe}.
+//     */
+//    public static AreaCodeInfoRequest of(final String dwldSe) {
+//        return of(AreaCodeInfoRequest::new)
+//                .dwldSe(dwldSe);
+//    }
+
     /**
      * Creates a new instance with specified {@value #PROPERTY_DWLD_SE} property value.
      *
      * @param dwldSe the value for the {@value #PROPERTY_DWLD_SE} property.
      * @return a new instance with {@code dwldSe}.
      */
-    public static AreaCodeInfoRequest of(final String dwldSe) {
-        return of(AreaCodeInfoRequest::new)
-                .dwldSe(dwldSe);
-    }
-
     public static AreaCodeInfoRequest of(final DwldSe dwldSe) {
         Objects.requireNonNull(dwldSe, "dwldSe is null");
-        return of(dwldSe.value());
+        return of(AreaCodeInfoRequest::new)
+                .dwldSe(dwldSe);
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     private static final BiConsumer<? super AreaCodeInfoRequest, ? super UriBuilder> URI_BUILDER = (s, b) -> {
         b.path(_DownloadAreaCodeServiceConstants.REQUEST_URI_GET_AREA_CODE_INFO)
-                .queryParam(_DownloadAreaCodeServiceConstants.PARAM_NAME_DWLD_SE, s.getDwldSe())
+                .queryParam(_DownloadAreaCodeServiceConstants.PARAM_NAME_DWLD_SE, s.getDwldSe().value())
         ;
     };
 
@@ -158,19 +164,29 @@ public class AreaCodeInfoRequest
 
     // ---------------------------------------------------------------------------------------------------------- dwldSe
 
+//    /**
+//     * Replaces current value of {@value #PROPERTY_DWLD_SE} property with specified value, and returns this instance.
+//     *
+//     * @param dwldSe new value for the {@value #PROPERTY_DWLD_SE} property.
+//     * @return this instance.
+//     */
+//    public AreaCodeInfoRequest dwldSe(final String dwldSe) {
+//        setDwldSe(dwldSe);
+//        return this;
+//    }
+
     /**
      * Replaces current value of {@value #PROPERTY_DWLD_SE} property with specified value, and returns this instance.
      *
      * @param dwldSe new value for the {@value #PROPERTY_DWLD_SE} property.
      * @return this instance.
      */
-    public AreaCodeInfoRequest dwldSe(final String dwldSe) {
+    public AreaCodeInfoRequest dwldSe(final DwldSe dwldSe) {
         setDwldSe(dwldSe);
         return this;
     }
 
     // -----------------------------------------------------------------------------------------------------------------
     @NotNull
-    // TODO: Use the enum!
-    private String dwldSe;
+    private DwldSe dwldSe;
 }
