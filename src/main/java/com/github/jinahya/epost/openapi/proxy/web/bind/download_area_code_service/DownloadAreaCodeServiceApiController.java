@@ -178,14 +178,17 @@ class DownloadAreaCodeServiceApiController
                                 beforeCommit(exchange.getResponse(), r -> {
                                     // https://stackoverflow.com/a/20933751/330457
                                     // https://stackoverflow.com/q/93551/330457
-                                    final var w = URLEncoder.encode(fn, StandardCharsets.UTF_8);
-                                    if (w.equals(fn)) {
+                                    final var charset = StandardCharsets.UTF_8;
+                                    final var encoded = URLEncoder.encode(fn, charset);
+                                    if (encoded.equals(fn)) {
                                         r.getHeaders().setContentDisposition(
-                                                ContentDisposition.attachment().filename(fn).build()
+                                                ContentDisposition.attachment().filename(encoded).build()
                                         );
                                     } else {
-                                        final var x = "filename: " + dwldSe + ".zip; filename*=utf-8''" + w;
-                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, "attachment; " + x);
+                                        final var filename1 = "filename: \"" + dwldSe + ".zip\"";
+                                        final var filename2 = "filename*=" + charset.name() + "''" + encoded;
+                                        final var headerVal = "attachment; " + filename1 + "; " + filename2;
+                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
                                     }
                                 });
                             });
