@@ -99,8 +99,12 @@ public final class AreaCodeInfoUtils {
                     final var i = keys.iterator();
                     return Arrays.stream(l.split("\\|"))
                             .map(v -> new AbstractMap.SimpleEntry<>(i.next(), v))
-                            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (x, y) -> y,
-                                                      LinkedHashMap::new));
+                            .collect(Collectors.toMap(
+                                    Map.Entry::getKey,
+                                    Map.Entry::getValue,
+                                    (x, y) -> y,
+                                    LinkedHashMap::new)
+                            );
                 })
                 .forEach(consumer);
     }

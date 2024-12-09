@@ -27,9 +27,15 @@ public class AreaCodeInfoResponse
     // -----------------------------------------------------------------------------------------------------------------
     static final String ROOT_NAME = "AreaCodeInfoResponse";
 
+    static final String PROPERTY_NAME_FILE = "file";
+
     // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+
+    /**
+     * Creates a new instance.
+     */
     public AreaCodeInfoResponse() {
         super(AreaCodeInfoRequest.class);
     }
@@ -82,9 +88,9 @@ public class AreaCodeInfoResponse
     }
 
     /**
-     * Downloads this response's {@code file} to specified file.
+     * Downloads this response's {@value #PROPERTY_NAME_FILE} content to specified file.
      *
-     * @param target the target file to which this response's {@code file} is downloaded.
+     * @param target the target file to which this response's {@value #PROPERTY_NAME_FILE} is downloaded.
      * @return the number of bytes downloaded to the {@code target}.
      * @see AreaCodeInfoUtils#downloadFile(AreaCodeInfoResponse, File)
      */

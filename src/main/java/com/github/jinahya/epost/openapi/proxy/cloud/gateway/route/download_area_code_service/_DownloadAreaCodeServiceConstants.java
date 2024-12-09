@@ -21,10 +21,17 @@ public final class _DownloadAreaCodeServiceConstants {
     // -----------------------------------------------------------------------------------------------------------------
     public static final String PATH_GET_AREA_CODE_INFO = "getAreaCodeInfo";
 
+    /**
+     * The request uri for the {@value #PATH_GET_AREA_CODE_INFO}. The value is {@value}.
+     */
     public static final String REQUEST_URI_GET_AREA_CODE_INFO = REQUEST_URI + '/' + PATH_GET_AREA_CODE_INFO;
 
     // -----------------------------------------------------------------------------------------------------------------
-    public static final String PARAM_NAME_DWLDSE = "dwldSe";
+
+    /**
+     * The paameter name of {@value}.
+     */
+    public static final String PARAM_NAME_DWLD_SE = "dwldSe";
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
     private _DownloadAreaCodeServiceConstants() {

@@ -118,6 +118,13 @@ public class AreaCodeInfoRequest
     }
 
     // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
+
+    /**
+     * Creates a new instance with specified {@value #PROPERTY_DWLD_SE} property value.
+     *
+     * @param dwldSe the value for the {@value #PROPERTY_DWLD_SE} property.
+     * @return a new instance with {@code dwldSe}.
+     */
     public static AreaCodeInfoRequest of(final String dwldSe) {
         return of(AreaCodeInfoRequest::new)
                 .dwldSe(dwldSe);
@@ -126,7 +133,7 @@ public class AreaCodeInfoRequest
     // -----------------------------------------------------------------------------------------------------------------
     private static final BiConsumer<? super AreaCodeInfoRequest, ? super UriBuilder> URI_BUILDER = (s, b) -> {
         b.path(_DownloadAreaCodeServiceConstants.REQUEST_URI_GET_AREA_CODE_INFO)
-                .queryParam(_DownloadAreaCodeServiceConstants.PARAM_NAME_DWLDSE, s.getDwldSe())
+                .queryParam(_DownloadAreaCodeServiceConstants.PARAM_NAME_DWLD_SE, s.getDwldSe())
         ;
     };
 
