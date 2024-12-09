@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.reactivestreams.Publisher;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
@@ -118,7 +119,8 @@ class DownloadAreaCodeServiceApiController
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    private Flux<DataBuffer> getFileContentPublisher(final String dwldSe, final Consumer<? super String> consumer) {
+    private Publisher<? extends DataBuffer> getFileContentPublisher(final String dwldSe,
+                                                                    final Consumer<? super String> filenameConsumer) {
         return service().exchange(AreaCodeInfoRequest.of(dwldSe))
                 .map(AreaCodeInfoResponse::getFile)
                 .flatMapMany(f -> {
@@ -128,7 +130,7 @@ class DownloadAreaCodeServiceApiController
                         final var path = FileSystems.getDefault().getPath(uri.getPath());
                         filename = path.getFileName().toString();
                     }
-                    consumer.accept(filename);
+                    filenameConsumer.accept(filename);
                     return WebClientUtils.retrieveBodyToFlux(f, DataBuffer.class);
                 });
     }
@@ -148,10 +150,11 @@ class DownloadAreaCodeServiceApiController
                     _DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT
             },
             produces = {
-                    MediaType.APPLICATION_OCTET_STREAM_VALUE
+                    MediaType.APPLICATION_OCTET_STREAM_VALUE,
+                    "application/zip"
             }
     )
-    Flux<DataBuffer> readAreaCodeInfoFileContent(
+    Publisher<? extends DataBuffer> readAreaCodeInfoFileContent(
             final ServerWebExchange exchange,
             @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final String dwldSe,
             @RequestParam(value = _DownloadAreaCodeServiceApiConstants.PARAM_ATTACH, required = false)
@@ -168,9 +171,9 @@ class DownloadAreaCodeServiceApiController
                             .flatMap(a -> {
                                 return Optional.ofNullable(filename)
                                         .map(String::strip)
-                                        .filter(v -> !v.isBlank())
-                                        .or(() -> Optional.ofNullable(f));
+                                        .filter(v -> !v.isBlank());
                             })
+                            .or(() -> Optional.ofNullable(f))
                             .ifPresent(fn -> {
                                 beforeCommit(exchange.getResponse(), r -> {
                                     // https://stackoverflow.com/a/20933751/330457
