@@ -63,7 +63,7 @@ class DownloadAreaCodeServiceApiController
         return EntityModel.of(response, links(response));
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------------------------- /
 
     /**
      * Reads all responses for all values {@link DwldSe} enum.
@@ -79,7 +79,8 @@ class DownloadAreaCodeServiceApiController
                     _DownloadAreaCodeServiceApiConstants.REQUEST_URI_AREA_CODE_INFO
             },
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<AreaCodeInfoResponse>> readAreaCodeInfo(final ServerWebExchange exchange) {

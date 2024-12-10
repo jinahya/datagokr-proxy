@@ -25,17 +25,25 @@ public final class HttpURLConnectionUtils {
                 || responseCode == RESPONSE_CODE_303_SEE_OTHER;
     }
 
+    /**
+     * {@code GET}s content of a resource located by specified URL to specified target file.
+     *
+     * @param source the URL to {@code GET}.
+     * @param target the target file to which the content is saved.
+     * @return the number of bytes written to the {@code target}.
+     * @throws IOException if an I/O error occurs.
+     */
     public static long get(final URL source, final File target) throws IOException {
         Objects.requireNonNull(source, "source is null");
         Objects.requireNonNull(target, "target is null");
         final var connection = source.openConnection();
-        if (connection instanceof HttpURLConnection httpurlc) {
-            httpurlc.setRequestMethod("GET");
-            httpurlc.setConnectTimeout(Math.toIntExact(TimeUnit.SECONDS.toMillis(1L)));
-            httpurlc.setReadTimeout(Math.toIntExact(TimeUnit.SECONDS.toMillis(2L)));
-            final var responseCode = httpurlc.getResponseCode();
+        if (connection instanceof HttpURLConnection hurlc) {
+            hurlc.setRequestMethod("GET");
+            hurlc.setConnectTimeout(Math.toIntExact(TimeUnit.SECONDS.toMillis(1L)));
+            hurlc.setReadTimeout(Math.toIntExact(TimeUnit.SECONDS.toMillis(2L)));
+            final var responseCode = hurlc.getResponseCode();
             if (is3xx(responseCode)) {
-                final var location = httpurlc.getHeaderField("Location");
+                final var location = hurlc.getHeaderField("Location");
                 if (location == null) {
                     throw new IOException("3XX with no Location header");
                 }
@@ -45,9 +53,9 @@ public final class HttpURLConnectionUtils {
                 throw new IOException("unexpected response code: " + responseCode);
             }
         }
-        var bytes = 0L;
         try {
             connection.connect();
+            var bytes = 0L;
             try (var input = connection.getInputStream();
                  var output = new FileOutputStream(target)) {
                 final var buffer = new byte[8192];
@@ -57,12 +65,12 @@ public final class HttpURLConnectionUtils {
                 }
                 output.flush();
             }
+            return bytes;
         } finally {
-            if (connection instanceof HttpURLConnection httpurlc) {
-                httpurlc.disconnect();
+            if (connection instanceof HttpURLConnection hurlc) {
+                hurlc.disconnect();
             }
         }
-        return bytes;
     }
 
     private HttpURLConnectionUtils() {
