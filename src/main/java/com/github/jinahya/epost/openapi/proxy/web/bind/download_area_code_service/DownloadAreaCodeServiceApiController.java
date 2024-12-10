@@ -121,12 +121,6 @@ class DownloadAreaCodeServiceApiController
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    static String getFilename(final URI uri) {
-        assert uri != null;
-        final var path = FileSystems.getDefault().getPath(uri.getPath());
-        return path.getFileName().toString();
-    }
-
     private Publisher<? extends DataBuffer> getFileContentPublisher(final DwldSe dwldSe,
                                                                     final Consumer<? super String> filenameConsumer) {
         return service().exchange(AreaCodeInfoRequest.of(dwldSe))
