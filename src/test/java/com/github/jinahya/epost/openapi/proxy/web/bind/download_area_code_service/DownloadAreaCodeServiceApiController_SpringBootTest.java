@@ -43,7 +43,7 @@ class DownloadAreaCodeServiceApiController_SpringBootTest
             final var request = i.getArgument(0, AreaCodeInfoRequest.class);
             final var dwldSe = request.getDwldSe();
             try (final var resource = AreaCodeInfoResponse.class.getResourceAsStream(
-                    "getAreaCodeInfo_response" + dwldSe + ".xml")) {
+                    "getAreaCodeInfo_response" + dwldSe.value() + ".xml")) {
                 final var response = AbstractTypeUtils.unmarshalNoNamespacedInstance(
                         AreaCodeInfoResponse.class, resource);
                 return Mono.just(response.requestInstance(request).get());

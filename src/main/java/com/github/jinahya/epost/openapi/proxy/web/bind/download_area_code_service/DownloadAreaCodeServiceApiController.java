@@ -1,5 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.web.bind.download_area_code_service;
 
+import com.github.jinahya.epost.openapi.proxy._com.springframework.web.util._UriComponents_Utils;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest.DwldSe;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoResponse;
@@ -120,17 +121,23 @@ class DownloadAreaCodeServiceApiController
     }
 
     // -----------------------------------------------------------------------------------------------------------------
+    static String getFilename(final URI uri) {
+        assert uri != null;
+        final var path = FileSystems.getDefault().getPath(uri.getPath());
+        return path.getFileName().toString();
+    }
+
     private Publisher<? extends DataBuffer> getFileContentPublisher(final DwldSe dwldSe,
                                                                     final Consumer<? super String> filenameConsumer) {
         return service().exchange(AreaCodeInfoRequest.of(dwldSe))
                 .map(AreaCodeInfoResponse::getFile)
                 .flatMapMany(f -> {
-                    final String filename;
-                    {
-                        final var uri = URI.create(f);
-                        final var path = FileSystems.getDefault().getPath(uri.getPath());
-                        filename = path.getFileName().toString();
-                    }
+                    final String filename = _UriComponents_Utils.getFile(f, true).orElse(null);
+//                    {
+//                        final var uri = URI.create(f);
+//                        final var path = FileSystems.getDefault().getPath(uri.getPath());
+//                        filename = path.getFileName().toString();
+//                    }
                     filenameConsumer.accept(filename);
                     return WebClientUtils.retrieveBodyToFlux(f, DataBuffer.class);
                 });
@@ -184,41 +191,14 @@ class DownloadAreaCodeServiceApiController
                                         } else {
                                             final var filename1 = "filename=\"" + dwldSe.value() + ".zip\"";
                                             // uppercase 'UTF-8' doesn't work, at least, with Postman
-                                            final var filename2 = "filename*=utf-8''" + encoded; // uppercase UTF-8 doesn't work at least with Postman
+                                            final var filename2 =
+                                                    "filename*=utf-8''" + encoded; // uppercase UTF-8 doesn't work at least with Postman
                                             final var headerVal = "attachment; " + filename1 + "; " + filename2;
                                             r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
                                         }
                                     });
                                 });
                     }
-//                    // attach 가 true 이고 filename 혹은 f 가 present 할 경우,
-//                    // Content-Disposition: attachment; filename="v" 헤더를 붙인다.
-//                    Optional.ofNullable(attach)
-//                            .filter(Boolean::booleanValue)
-//                            .flatMap(a -> {
-//                                return Optional.ofNullable(filename)
-//                                        .map(String::strip)
-//                                        .filter(v -> !v.isBlank());
-//                            })
-//                            .or(() -> Optional.ofNullable(f))
-//                            .ifPresent(fn -> {
-//                                beforeCommit(exchange.getResponse(), r -> {
-//                                    // https://stackoverflow.com/a/20933751/330457
-//                                    // https://stackoverflow.com/q/93551/330457
-//                                    final var charset = StandardCharsets.UTF_8;
-//                                    final var encoded = URLEncoder.encode(fn, charset);
-//                                    if (encoded.equals(fn)) {
-//                                        r.getHeaders().setContentDisposition(
-//                                                ContentDisposition.attachment().filename(encoded).build()
-//                                        );
-//                                    } else {
-//                                        final var filename1 = "filename: \"" + dwldSe + ".zip\"";
-//                                        final var filename2 = "filename*=" + charset.name() + "''" + encoded;
-//                                        final var headerVal = "attachment; " + filename1 + "; " + filename2;
-//                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
-//                                    }
-//                                });
-//                            });
                 }
         );
     }
