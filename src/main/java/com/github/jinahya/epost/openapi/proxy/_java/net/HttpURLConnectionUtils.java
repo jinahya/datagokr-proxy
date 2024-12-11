@@ -1,4 +1,4 @@
-package com.github.jinahya.epost.openapi.proxy._misc.net;
+package com.github.jinahya.epost.openapi.proxy._java.net;
 
 import java.io.File;
 import java.io.FileOutputStream;

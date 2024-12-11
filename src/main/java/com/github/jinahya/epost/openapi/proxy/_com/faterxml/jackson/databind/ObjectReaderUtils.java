@@ -1,4 +1,4 @@
-package com.github.jinahya.epost.openapi.proxy._misc.jackson.databind;
+package com.github.jinahya.epost.openapi.proxy._com.faterxml.jackson.databind;
 
 import com.fasterxml.jackson.databind.ObjectReader;
 

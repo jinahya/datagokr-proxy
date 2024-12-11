@@ -115,7 +115,7 @@ public abstract class AbstractType<SELF extends AbstractType<SELF>>
     private List<Element> unknownElements;
 
     // -----------------------------------------------------------------------------------------------------------------
-    @Size(max = 0, message = "no unknown properties are expected")
+//    @Size(max = 0, message = "no unknown properties are expected")
     @JsonAnySetter
     @XmlTransient
     @Setter(AccessLevel.NONE)

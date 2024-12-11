@@ -1,6 +1,6 @@
-package com.github.jinahya.epost.openapi.proxy._misc.xml.stream;
+package com.github.jinahya.epost.openapi.proxy._javax.xml.stream;
 
-import com.github.jinahya.epost.openapi.proxy._misc.xml.stream.util.NoNamespaceStreamReaderDelegate;
+import com.github.jinahya.epost.openapi.proxy._javax.xml.stream.util.NoNamespaceStreamReaderDelegate;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 

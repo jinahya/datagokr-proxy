@@ -1,6 +1,6 @@
-package com.github.jinahya.epost.openapi.proxy._misc.invoke;
+package com.github.jinahya.epost.openapi.proxy._java.misc.invoke;
 
-import com.github.jinahya.epost.openapi.proxy._misc.lang.invoke.LookupUtils;
+import com.github.jinahya.epost.openapi.proxy._java.lang.invoke.LookupUtils;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

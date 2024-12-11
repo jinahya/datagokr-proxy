@@ -1,6 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service;
 
-import com.github.jinahya.epost.openapi.proxy._misc.net.HttpURLConnectionUtils;
+import com.github.jinahya.epost.openapi.proxy._java.net.HttpURLConnectionUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;

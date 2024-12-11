@@ -2,8 +2,8 @@ package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-import com.github.jinahya.epost.openapi.proxy._misc.jackson.databind.ObjectReaderUtils;
-import com.github.jinahya.epost.openapi.proxy._misc.xml.stream.XMLInputFactoryUtils;
+import com.github.jinahya.epost.openapi.proxy._com.faterxml.jackson.databind.ObjectReaderUtils;
+import com.github.jinahya.epost.openapi.proxy._javax.xml.stream.XMLInputFactoryUtils;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;

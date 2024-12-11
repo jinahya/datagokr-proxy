@@ -1,4 +1,4 @@
-package com.github.jinahya.epost.openapi.proxy._misc.netty.http.client;
+package com.github.jinahya.epost.openapi.proxy._reactor.netty.http.client;
 
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClient;
