@@ -19,7 +19,7 @@ import java.util.Set;
 @Slf4j
 class SwaggerConfig {
 
-//    @org.springframework.context.annotation.Bean
+    //    @org.springframework.context.annotation.Bean
     public Set<AbstractSwaggerUiConfigProperties.SwaggerUrl> apis(
             final RouteDefinitionLocator locator,
             final SwaggerUiConfigParameters swaggerUiConfigParameters) {
