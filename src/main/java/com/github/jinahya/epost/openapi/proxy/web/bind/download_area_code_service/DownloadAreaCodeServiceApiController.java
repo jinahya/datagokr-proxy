@@ -1,6 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.web.bind.download_area_code_service;
 
-import com.github.jinahya.epost.openapi.proxy._com.springframework.web.util._UriComponents_Utils;
+import com.github.jinahya.epost.openapi.proxy._hidden._com.springframework.web.util._UriComponents_Utils;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest.DwldSe;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoResponse;
