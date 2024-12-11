@@ -14,6 +14,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
+import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
@@ -84,12 +85,11 @@ class DownloadAreaCodeServiceApiController
     )
     Flux<EntityModel<AreaCodeInfoResponse>> readAreaCodeInfo(final ServerWebExchange exchange) {
         return Flux.fromArray(DwldSe.values())
-//                .map(DwldSe::value)
                 .flatMapSequential(v -> service().exchange(AreaCodeInfoRequest.of(v)))
                 .map(this::model);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------- /{dwldSe}
 
     /**
      * Reads a response for specified value of {@link DwldSe} enum.
@@ -118,18 +118,13 @@ class DownloadAreaCodeServiceApiController
                 .map(this::model);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------ /{dwldSe}/file/content
     private Publisher<? extends DataBuffer> getFileContentPublisher(final DwldSe dwldSe,
                                                                     final Consumer<? super String> filenameConsumer) {
         return service().exchange(AreaCodeInfoRequest.of(dwldSe))
                 .map(AreaCodeInfoResponse::getFile)
                 .flatMapMany(f -> {
                     final String filename = _UriComponents_Utils.getFile(f, true).orElse(null);
-//                    {
-//                        final var uri = URI.create(f);
-//                        final var path = FileSystems.getDefault().getPath(uri.getPath());
-//                        filename = path.getFileName().toString();
-//                    }
                     filenameConsumer.accept(filename);
                     return WebClientUtils.retrieveBodyToFlux(f, DataBuffer.class);
                 });
@@ -194,4 +189,7 @@ class DownloadAreaCodeServiceApiController
                 }
         );
     }
+
+    // -----------------------------------------------------------------------------------------------------------------
+    private final RouteLocator routeLocator;
 }
