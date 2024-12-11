@@ -20,8 +20,8 @@ final class _DownloadAreaCodeServiceApiConstants {
     static final String PARAM_FILENAME = "filename";
 
     // ------------------------------------------------------------------------------------ /api/downloadAreaCodeService
-    static final String REQUEST_URI = __WebBindConstants.REQUEST_URI_API
-            + '/' + _DownloadAreaCodeServiceConstants.SERVICE_NAME;
+    static final String REQUEST_URI =
+            __WebBindConstants.REQUEST_URI_API + '/' + _DownloadAreaCodeServiceConstants.SERVICE_NAME;
 
     // ----------------------------------------------------------------------- /api/downloadAreaCodeService/areaCodeInfo
     static final String PATH_AREA_CODE_INFO = "areaCodeInfo";
