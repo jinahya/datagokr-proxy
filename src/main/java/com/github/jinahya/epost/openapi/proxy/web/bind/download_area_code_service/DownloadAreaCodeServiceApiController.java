@@ -14,7 +14,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Publisher;
-import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
@@ -189,7 +188,4 @@ class DownloadAreaCodeServiceApiController
                 }
         );
     }
-
-    // -----------------------------------------------------------------------------------------------------------------
-    private final RouteLocator routeLocator;
 }
