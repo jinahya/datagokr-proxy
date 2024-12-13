@@ -1,7 +1,7 @@
-package com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_search_all_service;
+package com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service;
 
-import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_search_all_service.NewAddressListAreaCdSearchAllRequest;
-import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_search_all_service.NewAddressListAreaCdSearchAllResponse.NewAddressListAreaCdSearchAll;
+import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_service.NewAddressListAreaCdRequest;
+import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_service.NewAddressListAreaCdResponse;
 import com.github.jinahya.epost.openapi.proxy.web.bind._ApiController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
@@ -22,25 +22,27 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.LongAdder;
 
-import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_search_all_service._RetrieveNewAdressAreCdSearchAllServiceApiConstants.REQUEST_PARAM_SRCHWRD;
-import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_search_all_service._RetrieveNewAdressAreCdSearchAllServiceApiConstants.REQUEST_URI_SEARCH;
+import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.REQUEST_PARAM_SEARCH_SE;
+import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.REQUEST_PARAM_SRCHWRD;
+import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.REQUEST_URI_SEARCH;
 
-@Tag(name = _RetrieveNewAdressAreCdSearchAllServiceApiConstants.TAG)
+@Tag(name = _RetrieveNewAdressAreaCdServiceApiConstants.TAG)
 @Validated
 @RestController
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Slf4j
-class RetrieveNewAdressAreaCdSearchAllServiceApiController
-        extends _ApiController<RetrieveNewAdressAreaCdSearchAllServiceApiService> {
+class RetrieveNewAdressAreaCdServiceApiController
+        extends _ApiController<RetrieveNewAdressAreaCdServiceApiService> {
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 
-    private Iterable<Link> links(final NewAddressListAreaCdSearchAll content) {
+    private Iterable<Link> links(final NewAddressListAreaCdResponse.NewAddressListAreaCd content) {
         return List.of(
         );
     }
 
-    private EntityModel<NewAddressListAreaCdSearchAll> model(final NewAddressListAreaCdSearchAll content) {
+    private EntityModel<NewAddressListAreaCdResponse.NewAddressListAreaCd> model(
+            final NewAddressListAreaCdResponse.NewAddressListAreaCd content) {
         return EntityModel.of(content, links(content));
     }
 
@@ -50,13 +52,15 @@ class RetrieveNewAdressAreaCdSearchAllServiceApiController
                     MediaType.APPLICATION_NDJSON_VALUE
             }
     )
-    Flux<EntityModel<NewAddressListAreaCdSearchAll>> search(
+    Flux<EntityModel<NewAddressListAreaCdResponse.NewAddressListAreaCd>> search(
             final ServerWebExchange exchange,
+            @RequestParam(REQUEST_PARAM_SEARCH_SE) final NewAddressListAreaCdRequest.SearchSe searchSe,
             @RequestParam(REQUEST_PARAM_SRCHWRD) final String srchwrd) {
         final var total = new AtomicReference<Integer>();
         final var count = new LongAdder();
-        return Mono.just(NewAddressListAreaCdSearchAllRequest.of(
+        return Mono.just(NewAddressListAreaCdRequest.of(
                         null,
+                        searchSe,
                         srchwrd,
                         32,
                         1
@@ -74,8 +78,8 @@ class RetrieveNewAdressAreaCdSearchAllServiceApiController
                     }
                     return f;
                 })
-                .flatMap(r -> Flux.fromIterable(r.getNewAddressListAreaCdSearchAll()))
-                .<NewAddressListAreaCdSearchAll>handle((e, s) -> {
+                .flatMap(r -> Flux.fromIterable(r.getNewAddressListAreaCdList()))
+                .<NewAddressListAreaCdResponse.NewAddressListAreaCd>handle((e, s) -> {
                     count.increment();
                     final var t = total.get();
                     final var c = count.sum();

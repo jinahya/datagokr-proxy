@@ -12,6 +12,7 @@ final class _DownloadAreaCodeServiceApiConstants {
     static final String TAG = "DownloadAreaCodeService";
 
     // -----------------------------------------------------------------------------------------------------------------
+    static final String REL_FILE = "file";
     static final String REL_FILE_CONTENT = "fileContent";
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -36,6 +37,11 @@ final class _DownloadAreaCodeServiceApiConstants {
     static final String PATH_TEMPLATE_DWLD_SE = '{' + PATH_NAME_DWLD_SE + ':' + PATH_VALUE_DWLD_SE + '}';
 
     static final String REQUEST_URI_DWLD_SE = REQUEST_URI_AREA_CODE_INFO + '/' + PATH_TEMPLATE_DWLD_SE;
+
+    // ------------------------------------------------------ /api/downloadAreaCodeService/areaCodeInfo/{dwldSe:.+}/file
+    static final String PATH_SEGMENT_FILE = REL_FILE;
+
+    static final String REQUEST_URI_FILE = REQUEST_URI_DWLD_SE + '/' + PATH_SEGMENT_FILE;
 
     // ----------------------------------------------- /api/downloadAreaCodeService/areaCodeInfo/{dwldSe:.+}/fileContent
     static final String PATH_SEGMENT_FILE_CONTENT = REL_FILE_CONTENT;

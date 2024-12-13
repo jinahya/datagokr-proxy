@@ -62,6 +62,21 @@ class DownloadAreaCodeServiceApiController
         return EntityModel.of(response, links(response));
     }
 
+    private Publisher<DataBuffer> getFileContentPublisher(final DwldSe dwldSe,
+                                                          final Consumer<? super String> filenameConsumer) {
+        return service().exchange(AreaCodeInfoRequest.of(dwldSe))
+                .map(AreaCodeInfoResponse::getFile)
+                .flatMapMany(f -> {
+                    final String filename = _UriComponents_Utils.getFile(f, true).orElse(null);
+                    filenameConsumer.accept(filename);
+                    return WebClientUtils.retrieveBodyToFlux(f, DataBuffer.class);
+                });
+    }
+
+    // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
+
+    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+
     // --------------------------------------------------------------------------------------------------------------- /
 
     /**
@@ -117,17 +132,33 @@ class DownloadAreaCodeServiceApiController
                 .map(this::model);
     }
 
-    // ------------------------------------------------------------------------------------------ /{dwldSe}/file/content
-    private Publisher<? extends DataBuffer> getFileContentPublisher(final DwldSe dwldSe,
-                                                                    final Consumer<? super String> filenameConsumer) {
-        return service().exchange(AreaCodeInfoRequest.of(dwldSe))
-                .map(AreaCodeInfoResponse::getFile)
-                .flatMapMany(f -> {
-                    final String filename = _UriComponents_Utils.getFile(f, true).orElse(null);
-                    filenameConsumer.accept(filename);
-                    return WebClientUtils.retrieveBodyToFlux(f, DataBuffer.class);
-                });
+    // -------------------------------------------------------------------------------------------------- /{dwldSe}/file
+
+    /**
+     * Reads the {@code $.file} value of the {@link AreaCodeInfoResponse} retrieved for specified {@link DwldSe}.
+     *
+     * @param exchange a server web exchange.
+     * @param dwldSe   the value of {@link DwldSe} to download.
+     * @return a mono of {@code $.file} value of the {@link AreaCodeInfoResponse} for {@code dwldSe}.
+     */
+    @GetMapping(
+            path = {
+                    _DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE
+            },
+            produces = {
+                    MediaType.TEXT_PLAIN_VALUE
+            }
+    )
+    Mono<String> readAreaCodeInfoFile(
+            final ServerWebExchange exchange,
+            @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final DwldSe dwldSe) {
+        return service()
+                .exchange(AreaCodeInfoRequest.of(dwldSe))
+                .map(v -> v.cmmMsgHeader(null))
+                .map(AreaCodeInfoResponse::getFile);
     }
+
+    // ------------------------------------------------------------------------------------------ /{dwldSe}/file/content
 
     /**
      * Reads(downloads) the {@link AreaCodeInfoResponse#getFile() file} content of the response for specified value of
@@ -148,7 +179,7 @@ class DownloadAreaCodeServiceApiController
                     "application/zip"
             }
     )
-    Publisher<? extends DataBuffer> readAreaCodeInfoFileContent(
+    Publisher<DataBuffer> readAreaCodeInfoFileContent(
             final ServerWebExchange exchange,
             @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final DwldSe dwldSe,
             @RequestParam(value = _DownloadAreaCodeServiceApiConstants.PARAM_ATTACH, required = false)

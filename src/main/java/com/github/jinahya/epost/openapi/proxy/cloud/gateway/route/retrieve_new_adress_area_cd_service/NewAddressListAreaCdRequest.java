@@ -3,6 +3,7 @@ package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.AbstractPairedRequestType;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.AbstractRequestType;
+import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.PaginatedRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route._RouteConstants;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,7 +27,8 @@ import java.util.function.BiConsumer;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class NewAddressListAreaCdRequest
-        extends AbstractPairedRequestType<NewAddressListAreaCdRequest, NewAddressListAreaCdResponse> {
+        extends AbstractPairedRequestType<NewAddressListAreaCdRequest, NewAddressListAreaCdResponse>
+        implements PaginatedRequest<NewAddressListAreaCdRequest> {
 
     @Serial
     private static final long serialVersionUID = -4766029866023904965L;
