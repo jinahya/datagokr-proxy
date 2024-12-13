@@ -47,11 +47,11 @@ class DownloadAreaCodeServiceApiController
         final var request = response.getRequestInstance();
         return List.of(
                 Link.of(UriComponentsBuilder.fromPath(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_DWLD_SE)
-                                .build(request.getDwldSe().value())
+                                .build(request.getDwldSe().text())
                                 .toString())
                         .withSelfRel(),
                 Link.of(UriComponentsBuilder.fromPath(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT)
-                                .build(request.getDwldSe().value())
+                                .build(request.getDwldSe().text())
                                 .toString())
                         .withRel(_DownloadAreaCodeServiceApiConstants.REL_FILE_CONTENT)
         );
@@ -208,7 +208,7 @@ class DownloadAreaCodeServiceApiController
                                                 ContentDisposition.attachment().filename(encoded).build()
                                         );
                                     } else {
-                                        final var filename1 = "filename=\"" + dwldSe.value() + ".zip\"";
+                                        final var filename1 = "filename=\"" + dwldSe.text() + ".zip\"";
                                         // uppercase 'UTF-8' doesn't work, at least, with Postman
                                         final var filename2 = "filename*=utf-8''" + encoded;
                                         final var headerVal = "attachment; " + filename1 + "; " + filename2;

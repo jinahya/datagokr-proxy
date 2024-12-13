@@ -37,7 +37,7 @@ class AreaCodeInfoRequest_Test
         @EnumSource(AreaCodeInfoRequest.DwldSe.class)
         @ParameterizedTest
         void valueOfValue__(final AreaCodeInfoRequest.DwldSe expected) {
-            final var actual = AreaCodeInfoRequest.DwldSe.valueOfValue(expected.value());
+            final var actual = AreaCodeInfoRequest.DwldSe.valueOfValue(expected.text());
             assertThat(actual).isSameAs(expected);
         }
     }

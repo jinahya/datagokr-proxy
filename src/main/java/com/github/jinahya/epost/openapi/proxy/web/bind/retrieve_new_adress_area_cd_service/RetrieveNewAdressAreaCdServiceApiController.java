@@ -3,16 +3,18 @@ package com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_service.NewAddressListAreaCdRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_service.NewAddressListAreaCdResponse;
 import com.github.jinahya.epost.openapi.proxy.web.bind._ApiController;
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
@@ -22,10 +24,11 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.LongAdder;
 
-import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.REQUEST_PARAM_SEARCH_SE;
-import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.REQUEST_PARAM_SRCHWRD;
-import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.REQUEST_URI_SEARCH;
+import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.PATH_SEGMENT_NAME_SEARCH_SE;
+import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.PATH_SEGMENT_NAME_SRCHWRD;
+import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.REQUEST_URI__SEARCH_SE__SRCHWRD;
 
+@Hidden
 @Tag(name = _RetrieveNewAdressAreaCdServiceApiConstants.TAG)
 @Validated
 @RestController
@@ -36,6 +39,7 @@ class RetrieveNewAdressAreaCdServiceApiController
 
     // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
 
+    // -----------------------------------------------------------------------------------------------------------------
     private Iterable<Link> links(final NewAddressListAreaCdResponse.NewAddressListAreaCd content) {
         return List.of(
         );
@@ -46,16 +50,18 @@ class RetrieveNewAdressAreaCdServiceApiController
         return EntityModel.of(content, links(content));
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
     @GetMapping(
-            path = REQUEST_URI_SEARCH,
+            path = REQUEST_URI__SEARCH_SE__SRCHWRD,
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<NewAddressListAreaCdResponse.NewAddressListAreaCd>> search(
             final ServerWebExchange exchange,
-            @RequestParam(REQUEST_PARAM_SEARCH_SE) final NewAddressListAreaCdRequest.SearchSe searchSe,
-            @RequestParam(REQUEST_PARAM_SRCHWRD) final String srchwrd) {
+            @PathVariable(PATH_SEGMENT_NAME_SEARCH_SE) final NewAddressListAreaCdRequest.SearchSe searchSe,
+            @PathVariable(PATH_SEGMENT_NAME_SRCHWRD) final String srchwrd) {
         final var total = new AtomicReference<Integer>();
         final var count = new LongAdder();
         return Mono.just(NewAddressListAreaCdRequest.of(
