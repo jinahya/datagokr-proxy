@@ -67,7 +67,7 @@ import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_eng_addre
 import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_eng_address_service._RetrieveEngAddressServiceApiConstants.REQUEST_URI_STATE;
 import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_eng_address_service._RetrieveEngAddressServiceApiConstants.REQUEST_URI_STATES;
 
-@Hidden
+//@Hidden
 @Tag(name = _RetrieveEngAddressServiceApiConstants.TAG)
 @Validated
 @RestController
@@ -339,6 +339,10 @@ class RetrieveEngAddressServiceApiController
                 ))
                 .expand(r -> Mono.just(r.forNextPage()))
                 .flatMapSequential(r -> service().exchange(r), 5, 1)
+                .doOnError(t -> {
+                    log.error("failed to exchange", t);
+                })
+                .onErrorComplete()
                 .switchOnFirst((s, f) -> {
                     if (s.hasValue()) {
                         final var cmmMsgHeader = s.get().getCmmMsgHeader();
@@ -508,6 +512,10 @@ class RetrieveEngAddressServiceApiController
                         5,
                         1
                 )
+                .doOnError(t -> {
+                    log.error("failed to exchange", t);
+                })
+                .onErrorComplete()
                 .switchOnFirst((s, f) -> {
                     final var cmmMsgHeader = s.get().getCmmMsgHeader();
                     total.compareAndSet(null, cmmMsgHeader.getTotalCount());
