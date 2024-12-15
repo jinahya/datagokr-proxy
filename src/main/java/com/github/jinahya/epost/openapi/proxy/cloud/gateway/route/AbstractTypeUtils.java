@@ -2,8 +2,8 @@ package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
-import com.github.jinahya.epost.openapi.proxy._misc.jackson.databind.ObjectReaderUtils;
-import com.github.jinahya.epost.openapi.proxy._misc.xml.stream.XMLInputFactoryUtils;
+import com.github.jinahya.epost.openapi.proxy._hidden._com.faterxml.jackson.databind._ObjectReader_Utils;
+import com.github.jinahya.epost.openapi.proxy._hidden._javax.xml.stream._XMLInputFactory_Utils;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
@@ -23,7 +23,7 @@ public final class AbstractTypeUtils {
         if (context == null) {
             context = JAXBContext.newInstance(clazz);
         }
-        return XMLInputFactoryUtils.unmarshalNoNamespacedInstance(
+        return _XMLInputFactory_Utils.unmarshalNoNamespacedInstance(
                 context,
                 clazz,
                 source
@@ -60,7 +60,7 @@ public final class AbstractTypeUtils {
 
     // -----------------------------------------------------------------------------------------------------------------
     public static <T extends AbstractType<T>> T deserializeInstance(final ObjectReader reader, final Object source) {
-        return ObjectReaderUtils.readValue(
+        return _ObjectReader_Utils.readValue(
                 reader,
                 source
         );

@@ -3,17 +3,19 @@ epost:
     proxy:
       service-key: ${SERVICE_KEY}
 
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include:
-#          - gateway
-#  endpoint:
+management:
+  endpoint:
 #    gateway:
-#      enabled: true
-#    health:
-#      show-details: always
+#      enabled: true # https://github.com/spring-cloud/spring-cloud-gateway/issues/3111
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include:
+          - beans
+          - gateway
+          - health
 
 # https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/global-filters.html#local-cache-response-global-filter
 # https://docs.spring.io/spring-cloud-gateway/reference/spring-cloud-gateway/gatewayfilter-factories/local-cache-response-filter.html
@@ -23,6 +25,9 @@ spring:
     name: epost-openapi-proxy
   cloud:
     gateway:
+      actuator:
+        verbose:
+          enabled: true
       filter:
         local-response-cache:
           enabled: true    # default: false
@@ -38,6 +43,8 @@ spring:
         wiretap: true
       httpserver:
         wiretap: true
+#  main:
+#    allow-circular-references: true
   profiles:
     default: development
     group:
@@ -49,6 +56,9 @@ spring:
 
 springdoc:
   show-actuator: true
+  swagger-ui:
+    operationsSorter: alpha
+    tagsSorter: alpha
 
 ---
 

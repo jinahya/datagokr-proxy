@@ -41,7 +41,7 @@ abstract class __ApiService {
     // ------------------------------------------------------------------------------------------------------- webServer
 
     // ------------------------------------------------------------------------------------------------------- webClient
-    protected WebClient webClient() {
+    private WebClient webClient() {
         assert webServer != null;
         if (webClient == null) {
             String localhost;

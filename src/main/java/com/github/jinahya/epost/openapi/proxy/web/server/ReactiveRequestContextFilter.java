@@ -1,6 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.web.server;
 
-import com.github.jinahya.epost.openapi.proxy._misc.util.context.ReactorContextUtils;
+import com.github.jinahya.epost.openapi.proxy._hidden._reactor.util.context._Context_Utils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
  * {@link reactor.util.context.Context}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
- * @see ReactorContextUtils
+ * @see _Context_Utils
  */
 @Component
 @Order(value = Ordered.HIGHEST_PRECEDENCE)
@@ -30,6 +30,6 @@ public class ReactiveRequestContextFilter
     @Override
     public Mono<Void> filter(final ServerWebExchange exchange, final WebFilterChain chain) {
         return chain.filter(exchange)
-                .contextWrite(c -> ReactorContextUtils.putRequest(c, exchange.getRequest()));
+                .contextWrite(c -> _Context_Utils.putRequest(c, exchange.getRequest()));
     }
 }

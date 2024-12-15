@@ -1,6 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route;
 
-import com.github.jinahya.epost.openapi.proxy._misc.lang.invoke.LookupUtils;
+import com.github.jinahya.epost.openapi.proxy._hidden._java.lang.invoke._Lookup_Utils;
 
 import java.lang.invoke.VarHandle;
 import java.lang.reflect.Field;
@@ -38,7 +38,7 @@ final class PaginatedRequestHelper {
         return COUNT_PER_PAGE_HANDLES.computeIfAbsent(clazz, k -> {
             final var field = countPerPageField(k, instance);
             try {
-                return LookupUtils.privateLookup(k).unreflectVarHandle(field);
+                return _Lookup_Utils.privateLookup(k).unreflectVarHandle(field);
             } catch (final IllegalAccessException iae) {
                 throw new RuntimeException("failed to unreflect" + field, iae);
             }
@@ -83,7 +83,7 @@ final class PaginatedRequestHelper {
         return CURRENT_PAGE_HANDLES.computeIfAbsent(clazz, k -> {
             final var field = currentPageField(k, instance);
             try {
-                return LookupUtils.privateLookup(k).unreflectVarHandle(field);
+                return _Lookup_Utils.privateLookup(k).unreflectVarHandle(field);
             } catch (final IllegalAccessException iae) {
                 throw new RuntimeException("failed to unreflect" + field, iae);
             }

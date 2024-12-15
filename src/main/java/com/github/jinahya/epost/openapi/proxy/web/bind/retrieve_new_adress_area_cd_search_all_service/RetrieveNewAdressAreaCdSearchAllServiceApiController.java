@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +48,8 @@ class RetrieveNewAdressAreaCdSearchAllServiceApiController
     @GetMapping(
             path = REQUEST_URI_SEARCH,
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<NewAddressListAreaCdSearchAll>> search(
@@ -85,6 +87,6 @@ class RetrieveNewAdressAreaCdSearchAllServiceApiController
                         s.complete();
                     }
                 })
-                .map(e -> model(e));
+                .map(this::model);
     }
 }

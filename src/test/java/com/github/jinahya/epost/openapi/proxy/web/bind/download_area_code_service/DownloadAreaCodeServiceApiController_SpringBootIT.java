@@ -59,7 +59,7 @@ class DownloadAreaCodeServiceApiController_SpringBootIT
     void readAreaCodeInfo__(final AreaCodeInfoRequest.DwldSe dwldSe) {
         webTestClient()
                 .get()
-                .uri(b -> b.path(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_DWLD_SE).build(dwldSe.value()))
+                .uri(b -> b.path(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_DWLD_SE).build(dwldSe.text()))
                 .exchange()
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaTypes.HAL_JSON)
@@ -86,7 +86,7 @@ class DownloadAreaCodeServiceApiController_SpringBootIT
                 .setLogLevel(Logger.ROOT_LOGGER_NAME, LogLevel.ERROR);
         webTestClient()
                 .get()
-                .uri(b -> b.path(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT).build(dwldSe.value()))
+                .uri(b -> b.path(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT).build(dwldSe.text()))
                 .exchange()
                 .expectStatus().isOk()
                 .returnResult(DataBuffer.class)

@@ -1,6 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service;
 
-import com.github.jinahya.epost.openapi.proxy._misc.net.HttpURLConnectionUtils;
+import com.github.jinahya.epost.openapi.proxy._hidden._java.net._HttpURLConnection_Utils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -63,7 +63,7 @@ public final class AreaCodeInfoUtils {
         }
         Objects.requireNonNull(target, "target is null");
         final var url = URI.create(responseFile).toURL();
-        return HttpURLConnectionUtils.get(url, target);
+        return _HttpURLConnection_Utils.get(url, target);
     }
 
     // -----------------------------------------------------------------------------------------------------------------

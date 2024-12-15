@@ -20,11 +20,10 @@ import lombok.NoArgsConstructor;
 import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @Tag(name = _RetrieveEngAddressServiceApiConstants.TAG)
-@RestController
+//@org.springframework.web.bind.annotation.RestController
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 class RetrieveEngAddressServiceRouteController
         extends _RouteController {

@@ -81,15 +81,15 @@ public class AreaCodeInfoRequest
         // -------------------------------------------------------------------------------------------------------------
 
         /**
-         * Finds the constant whose {@link #value() value} property matches specified value.
+         * Finds the constant whose {@link #text() value} property matches specified value.
          *
-         * @param value the value of {@link #value() value} property to match.
-         * @return the constant whose {@link #value() value} property matches {@code value}.
+         * @param value the value of {@link #text() value} property to match.
+         * @return the constant whose {@link #text() value} property matches {@code value}.
          */
         public static DwldSe valueOfValue(final String value) {
             Objects.requireNonNull(value, "value is null");
             for (final DwldSe v : values()) {
-                if (Objects.equals(v.value(), value)) {
+                if (Objects.equals(v.text(), value)) {
                     return v;
                 }
             }
@@ -97,8 +97,8 @@ public class AreaCodeInfoRequest
         }
 
         // ------------------------------------------------------------------------------------------------ CONSTRUCTORS
-        DwldSe(final String value) {
-            this.value = Objects.requireNonNull(value, "value is null");
+        DwldSe(final String text) {
+            this.text = Objects.requireNonNull(text, "text is null");
         }
 
         // ------------------------------------------------------------------------------------------------------- value
@@ -109,12 +109,12 @@ public class AreaCodeInfoRequest
          * @return the {@code value} of this constant.
          */
         @JsonValue
-        public String value() {
-            return value;
+        public String text() {
+            return text;
         }
 
         // -------------------------------------------------------------------------------------------------------------
-        private final String value;
+        private final String text;
     }
 
     // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
@@ -145,7 +145,7 @@ public class AreaCodeInfoRequest
     // -----------------------------------------------------------------------------------------------------------------
     private static final BiConsumer<? super AreaCodeInfoRequest, ? super UriBuilder> URI_BUILDER = (s, b) -> {
         b.path(_DownloadAreaCodeServiceConstants.REQUEST_URI_GET_AREA_CODE_INFO)
-                .queryParam(_DownloadAreaCodeServiceConstants.PARAM_NAME_DWLD_SE, s.getDwldSe().value())
+                .queryParam(_DownloadAreaCodeServiceConstants.PARAM_NAME_DWLD_SE, s.getDwldSe().text())
         ;
     };
 

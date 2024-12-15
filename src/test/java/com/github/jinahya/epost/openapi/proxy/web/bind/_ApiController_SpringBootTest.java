@@ -10,8 +10,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.junit.platform.commons.support.ReflectionSupport;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.ResolvableType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import reactor.core.publisher.Mono;
 
 import static com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.AbstractTypeUtils.unmarshalNoNamespacedInstance;
@@ -20,7 +20,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 @SuppressWarnings({
-        "java:S119" // <CONTROLLER ...>
+        "java:S119" // Type parameter names should comply with a naming convention
 })
 public abstract class _ApiController_SpringBootTest<
         CONTROLLER extends _ApiController<SERVICE>,
@@ -78,7 +78,7 @@ public abstract class _ApiController_SpringBootTest<
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    @MockBean
+    @MockitoBean
     @Accessors(fluent = true)
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.PROTECTED)

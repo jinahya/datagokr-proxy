@@ -1,5 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.web.bind.download_area_code_service;
 
+import com.github.jinahya.epost.openapi.proxy._hidden._com.springframework.web.util._UriComponents_Utils;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest.DwldSe;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoResponse;
@@ -29,10 +30,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystems;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -48,11 +47,11 @@ class DownloadAreaCodeServiceApiController
         final var request = response.getRequestInstance();
         return List.of(
                 Link.of(UriComponentsBuilder.fromPath(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_DWLD_SE)
-                                .build(request.getDwldSe().value())
+                                .build(request.getDwldSe().text())
                                 .toString())
                         .withSelfRel(),
                 Link.of(UriComponentsBuilder.fromPath(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT)
-                                .build(request.getDwldSe().value())
+                                .build(request.getDwldSe().text())
                                 .toString())
                         .withRel(_DownloadAreaCodeServiceApiConstants.REL_FILE_CONTENT)
         );
@@ -63,7 +62,22 @@ class DownloadAreaCodeServiceApiController
         return EntityModel.of(response, links(response));
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    private Publisher<DataBuffer> getFileContentPublisher(final DwldSe dwldSe,
+                                                          final Consumer<? super String> filenameConsumer) {
+        return service().exchange(AreaCodeInfoRequest.of(dwldSe))
+                .map(AreaCodeInfoResponse::getFile)
+                .flatMapMany(f -> {
+                    final String filename = _UriComponents_Utils.getFile(f, true).orElse(null);
+                    filenameConsumer.accept(filename);
+                    return WebClientUtils.retrieveBodyToFlux(f, DataBuffer.class);
+                });
+    }
+
+    // ------------------------------------------------------------------------------------------ STATIC_FACTORY_METHODS
+
+    // ---------------------------------------------------------------------------------------------------- CONSTRUCTORS
+
+    // --------------------------------------------------------------------------------------------------------------- /
 
     /**
      * Reads all responses for all values {@link DwldSe} enum.
@@ -79,17 +93,17 @@ class DownloadAreaCodeServiceApiController
                     _DownloadAreaCodeServiceApiConstants.REQUEST_URI_AREA_CODE_INFO
             },
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<AreaCodeInfoResponse>> readAreaCodeInfo(final ServerWebExchange exchange) {
         return Flux.fromArray(DwldSe.values())
-//                .map(DwldSe::value)
                 .flatMapSequential(v -> service().exchange(AreaCodeInfoRequest.of(v)))
                 .map(this::model);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
+    // ------------------------------------------------------------------------------------------------------- /{dwldSe}
 
     /**
      * Reads a response for specified value of {@link DwldSe} enum.
@@ -118,22 +132,33 @@ class DownloadAreaCodeServiceApiController
                 .map(this::model);
     }
 
-    // -----------------------------------------------------------------------------------------------------------------
-    private Publisher<? extends DataBuffer> getFileContentPublisher(final DwldSe dwldSe,
-                                                                    final Consumer<? super String> filenameConsumer) {
-        return service().exchange(AreaCodeInfoRequest.of(dwldSe))
-                .map(AreaCodeInfoResponse::getFile)
-                .flatMapMany(f -> {
-                    final String filename;
-                    {
-                        final var uri = URI.create(f);
-                        final var path = FileSystems.getDefault().getPath(uri.getPath());
-                        filename = path.getFileName().toString();
-                    }
-                    filenameConsumer.accept(filename);
-                    return WebClientUtils.retrieveBodyToFlux(f, DataBuffer.class);
-                });
+    // -------------------------------------------------------------------------------------------------- /{dwldSe}/file
+
+    /**
+     * Reads the {@code $.file} value of the {@link AreaCodeInfoResponse} retrieved for specified {@link DwldSe}.
+     *
+     * @param exchange a server web exchange.
+     * @param dwldSe   the value of {@link DwldSe} to download.
+     * @return a mono of {@code $.file} value of the {@link AreaCodeInfoResponse} for {@code dwldSe}.
+     */
+    @GetMapping(
+            path = {
+                    _DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE
+            },
+            produces = {
+                    MediaType.TEXT_PLAIN_VALUE
+            }
+    )
+    Mono<String> readAreaCodeInfoFile(
+            final ServerWebExchange exchange,
+            @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final DwldSe dwldSe) {
+        return service()
+                .exchange(AreaCodeInfoRequest.of(dwldSe))
+                .map(v -> v.cmmMsgHeader(null))
+                .map(AreaCodeInfoResponse::getFile);
     }
+
+    // ------------------------------------------------------------------------------------------ /{dwldSe}/file/content
 
     /**
      * Reads(downloads) the {@link AreaCodeInfoResponse#getFile() file} content of the response for specified value of
@@ -154,7 +179,7 @@ class DownloadAreaCodeServiceApiController
                     "application/zip"
             }
     )
-    Publisher<? extends DataBuffer> readAreaCodeInfoFileContent(
+    Publisher<DataBuffer> readAreaCodeInfoFileContent(
             final ServerWebExchange exchange,
             @PathVariable(_DownloadAreaCodeServiceApiConstants.PATH_NAME_DWLD_SE) final DwldSe dwldSe,
             @RequestParam(value = _DownloadAreaCodeServiceApiConstants.PARAM_ATTACH, required = false)
@@ -166,58 +191,31 @@ class DownloadAreaCodeServiceApiController
                 f -> {
                     // attach 가 true 이고 filename 혹은 f 가 present 할 경우,
                     // Content-Disposition: attachment; filename="v" 헤더를 붙인다.
-                    if (attach != null && attach) {
-                        Optional.ofNullable(filename)
-                                .map(String::strip)
-                                .filter(v -> !v.isBlank())
-                                .or(() -> Optional.ofNullable(f).map(String::strip).filter(v -> !v.isBlank()))
-                                .ifPresent(v -> {
-                                    beforeCommit(exchange.getResponse(), r -> {
-                                        // https://stackoverflow.com/a/20933751/330457
-                                        // https://stackoverflow.com/q/93551/330457
-                                        final var encoded = URLEncoder.encode(v, StandardCharsets.UTF_8);
-                                        if (encoded.equals(v)) {
-                                            r.getHeaders().setContentDisposition(
-                                                    ContentDisposition.attachment().filename(encoded).build()
-                                            );
-                                        } else {
-                                            final var filename1 = "filename=\"" + dwldSe.value() + ".zip\"";
-                                            // uppercase 'UTF-8' doesn't work, at least, with Postman
-                                            final var filename2 = "filename*=utf-8''" + encoded; // uppercase UTF-8 doesn't work at least with Postman
-                                            final var headerVal = "attachment; " + filename1 + "; " + filename2;
-                                            r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
-                                        }
-                                    });
-                                });
+                    if (attach == null || !attach) {
+                        return;
                     }
-//                    // attach 가 true 이고 filename 혹은 f 가 present 할 경우,
-//                    // Content-Disposition: attachment; filename="v" 헤더를 붙인다.
-//                    Optional.ofNullable(attach)
-//                            .filter(Boolean::booleanValue)
-//                            .flatMap(a -> {
-//                                return Optional.ofNullable(filename)
-//                                        .map(String::strip)
-//                                        .filter(v -> !v.isBlank());
-//                            })
-//                            .or(() -> Optional.ofNullable(f))
-//                            .ifPresent(fn -> {
-//                                beforeCommit(exchange.getResponse(), r -> {
-//                                    // https://stackoverflow.com/a/20933751/330457
-//                                    // https://stackoverflow.com/q/93551/330457
-//                                    final var charset = StandardCharsets.UTF_8;
-//                                    final var encoded = URLEncoder.encode(fn, charset);
-//                                    if (encoded.equals(fn)) {
-//                                        r.getHeaders().setContentDisposition(
-//                                                ContentDisposition.attachment().filename(encoded).build()
-//                                        );
-//                                    } else {
-//                                        final var filename1 = "filename: \"" + dwldSe + ".zip\"";
-//                                        final var filename2 = "filename*=" + charset.name() + "''" + encoded;
-//                                        final var headerVal = "attachment; " + filename1 + "; " + filename2;
-//                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
-//                                    }
-//                                });
-//                            });
+                    Optional.ofNullable(filename)
+                            .map(String::strip)
+                            .filter(v -> !v.isBlank())
+                            .or(() -> Optional.ofNullable(f).map(String::strip).filter(v -> !v.isBlank()))
+                            .ifPresent(v -> {
+                                beforeCommit(exchange.getResponse(), r -> {
+                                    // https://stackoverflow.com/a/20933751/330457
+                                    // https://stackoverflow.com/q/93551/330457
+                                    final var encoded = URLEncoder.encode(v, StandardCharsets.UTF_8);
+                                    if (encoded.equals(v)) {
+                                        r.getHeaders().setContentDisposition(
+                                                ContentDisposition.attachment().filename(encoded).build()
+                                        );
+                                    } else {
+                                        final var filename1 = "filename=\"" + dwldSe.text() + ".zip\"";
+                                        // uppercase 'UTF-8' doesn't work, at least, with Postman
+                                        final var filename2 = "filename*=utf-8''" + encoded;
+                                        final var headerVal = "attachment; " + filename1 + "; " + filename2;
+                                        r.getHeaders().set(HttpHeaders.CONTENT_DISPOSITION, headerVal);
+                                    }
+                                });
+                            });
                 }
         );
     }
