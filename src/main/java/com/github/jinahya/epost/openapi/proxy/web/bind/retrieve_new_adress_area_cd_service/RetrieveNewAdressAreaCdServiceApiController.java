@@ -3,8 +3,6 @@ package com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_service.NewAddressListAreaCdRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_service.NewAddressListAreaCdResponse;
 import com.github.jinahya.epost.openapi.proxy.web.bind._ApiController;
-import io.swagger.v3.oas.annotations.Hidden;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,8 +26,8 @@ import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adres
 import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.PATH_SEGMENT_NAME_SRCHWRD;
 import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_new_adress_area_cd_service._RetrieveNewAdressAreaCdServiceApiConstants.REQUEST_URI__SEARCH_SE__SRCHWRD;
 
-@Hidden
-@Tag(name = _RetrieveNewAdressAreaCdServiceApiConstants.TAG)
+//@Hidden
+//@Tag(name = _RetrieveNewAdressAreaCdServiceApiConstants.TAG)
 @Validated
 @RestController
 @NoArgsConstructor(access = AccessLevel.PACKAGE)

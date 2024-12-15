@@ -4,15 +4,13 @@ import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_a
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_search_all_service.NewAddressListAreaCdSearchAllResponse;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_new_adress_area_cd_search_all_service._RetrieveNewAdressAreaCdSearchAllServiceConstants;
 import com.github.jinahya.epost.openapi.proxy.web.bind._RouteController;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import reactor.core.publisher.Mono;
 
-@Tag(name = _RetrieveNewAdressAreCdSearchAllServiceApiConstants.TAG)
+//@Tag(name = _RetrieveNewAdressAreCdSearchAllServiceApiConstants.TAG)
 //@org.springframework.web.bind.annotation.RestController
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 class RetrieveNewAdressAreaCdSearchAllServiceRouteController
@@ -28,7 +26,8 @@ class RetrieveNewAdressAreaCdSearchAllServiceRouteController
             }
     )
     Mono<NewAddressListAreaCdSearchAllResponse> getNewAddressListAreaCdSearchAll(
-            @ParameterObject final NewAddressListAreaCdSearchAllRequest request) {
+//            @ParameterObject
+            final NewAddressListAreaCdSearchAllRequest request) {
         throw new UnsupportedOperationException("");
     }
 }

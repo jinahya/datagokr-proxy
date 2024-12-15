@@ -5,8 +5,6 @@ import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.AbstractPaired
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.AbstractRequestType;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.PaginatedRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route._RouteConstants;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -40,7 +38,7 @@ public class NewAddressListAreaCdRequest
 
     public static final String SEARCH_SE_POST = "post";
 
-    @Schema(enumAsRef = true)
+    //    @Schema(enumAsRef = true)
     @XmlEnum(String.class)
     public enum SearchSe {
 
@@ -123,21 +121,21 @@ public class NewAddressListAreaCdRequest
     }
 
     // -----------------------------------------------------------------------------------------------------------------
-    @Parameter(description = "검색구분; dong: 동(읍/면)명, road:도로명, post: 우편번호", required = true)
+//    @Parameter(description = "검색구분; dong: 동(읍/면)명, road:도로명, post: 우편번호", required = true)
     @NotNull
     private SearchSe searchSe;
 
-    @Parameter(description = "검색어", required = true)
+    //    @Parameter(description = "검색어", required = true)
     @NotBlank
     private String srchwrd;
 
     // -----------------------------------------------------------------------------------------------------------------
-    @Parameter(description = _RouteConstants.PARAMETER_DESCRIPTION_COUNT_PER_PAGE, required = true)
+//    @Parameter(description = _RouteConstants.PARAMETER_DESCRIPTION_COUNT_PER_PAGE, required = true)
     @Positive
     @NotNull
     private Integer countPerPage;
 
-    @Parameter(description = _RouteConstants.PARAMETER_DESCRIPTION_CURRENT_PAGE, required = true)
+    //    @Parameter(description = _RouteConstants.PARAMETER_DESCRIPTION_CURRENT_PAGE, required = true)
     @Positive
     @NotNull
     private Integer currentPage;

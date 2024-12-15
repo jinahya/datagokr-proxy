@@ -6,10 +6,6 @@ import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoResponse;
 import com.github.jinahya.epost.openapi.proxy.web.bind._ApiController;
 import com.github.jinahya.epost.openapi.proxy.web.reactive.function.client.WebClientUtils;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -36,7 +32,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-@Tag(name = _DownloadAreaCodeServiceApiConstants.TAG)
+//@Tag(name = _DownloadAreaCodeServiceApiConstants.TAG)
 @RestController
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 @Slf4j
@@ -85,9 +81,9 @@ class DownloadAreaCodeServiceApiController
      * @param exchange a server web exchange.
      * @return a flux of all responses for all values of {@link DwldSe} enum.
      */
-    @ApiResponse(content = {
-            @Content(schema = @Schema(implementation = AreaCodeInfoResponse.class))
-    })
+//    @ApiResponse(content = {
+//            @Content(schema = @Schema(implementation = AreaCodeInfoResponse.class))
+//    })
     @GetMapping(
             path = {
                     _DownloadAreaCodeServiceApiConstants.REQUEST_URI_AREA_CODE_INFO
@@ -112,9 +108,9 @@ class DownloadAreaCodeServiceApiController
      * @param dwldSe   the value of {@link DwldSe} enum for the response.
      * @return a mono of the responses for the {@code dwldSe}.
      */
-    @ApiResponse(content = {
-            @Content(schema = @Schema(implementation = AreaCodeInfoResponse.class))
-    })
+//    @ApiResponse(content = {
+//            @Content(schema = @Schema(implementation = AreaCodeInfoResponse.class))
+//    })
     @GetMapping(
             path = {
                     _DownloadAreaCodeServiceApiConstants.REQUEST_URI_DWLD_SE

@@ -1,7 +1,6 @@
 package com.github.jinahya.epost.openapi.proxy.cloud.gateway.route;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlTransient;
@@ -95,7 +94,7 @@ public abstract class AbstractResponseType<SELF extends AbstractResponseType<SEL
     private CmmMsgHeader cmmMsgHeader;
 
     // -----------------------------------------------------------------------------------------------------------------
-    @Schema(hidden = true)
+//    @Schema(hidden = true)
     @Valid
     @XmlTransient
     private SELF wrapped;

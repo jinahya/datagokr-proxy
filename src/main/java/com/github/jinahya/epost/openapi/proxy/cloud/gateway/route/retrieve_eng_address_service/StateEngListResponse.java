@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.AbstractPairedResponseType;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.AbstractResponseElementType;
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -59,7 +58,7 @@ public class StateEngListResponse
         }
 
         // -------------------------------------------------------------------------------------------------------------
-        @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
+//        @Schema(requiredMode = Schema.RequiredMode.REQUIRED)
         @NotBlank
         @JsonProperty(required = true)
         @XmlElement(required = true)

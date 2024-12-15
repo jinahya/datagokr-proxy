@@ -3,16 +3,14 @@ package com.github.jinahya.epost.openapi.proxy.web.bind.download_area_code_servi
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoResponse;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service._DownloadAreaCodeServiceConstants;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import reactor.core.publisher.Mono;
 
 // declared just for the Swagger UI
-@Tag(name = _DownloadAreaCodeServiceApiConstants.TAG)
+//@Tag(name = _DownloadAreaCodeServiceApiConstants.TAG)
 //@org.springframework.web.bind.annotation.RestController
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 class DownloadAreaCodeServiceRouteController {
@@ -24,7 +22,9 @@ class DownloadAreaCodeServiceRouteController {
                     MediaType.APPLICATION_JSON_VALUE
             }
     )
-    Mono<AreaCodeInfoResponse> getAreaCodeInfo(@ParameterObject final AreaCodeInfoRequest request) {
+    Mono<AreaCodeInfoResponse> getAreaCodeInfo(
+//            @ParameterObject
+            final AreaCodeInfoRequest request) {
         throw new UnsupportedOperationException("");
     }
 }

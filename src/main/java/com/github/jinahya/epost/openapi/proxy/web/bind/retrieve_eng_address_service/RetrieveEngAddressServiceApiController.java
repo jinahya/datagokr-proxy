@@ -18,10 +18,6 @@ import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_a
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_address_service.StateEngListRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_address_service.StateEngListResponse;
 import com.github.jinahya.epost.openapi.proxy.web.bind._ApiController;
-import io.swagger.v3.oas.annotations.Hidden;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -68,7 +64,7 @@ import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_eng_addre
 import static com.github.jinahya.epost.openapi.proxy.web.bind.retrieve_eng_address_service._RetrieveEngAddressServiceApiConstants.REQUEST_URI_STATES;
 
 //@Hidden
-@Tag(name = _RetrieveEngAddressServiceApiConstants.TAG)
+//@Tag(name = _RetrieveEngAddressServiceApiConstants.TAG)
 @Validated
 @RestController
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
@@ -111,7 +107,7 @@ class RetrieveEngAddressServiceApiController
         return EntityModel.of(content, links(content));
     }
 
-    @Operation(summary = "Reads all states.")
+    //    @Operation(summary = "Reads all states.")
     @GetMapping(
             path = REQUEST_URI_STATES,
             produces = {
@@ -123,7 +119,7 @@ class RetrieveEngAddressServiceApiController
                 .map(this::model);
     }
 
-    @Operation(summary = "Reads a state.")
+    //    @Operation(summary = "Reads a state.")
     @GetMapping(
             path = REQUEST_URI_STATE,
             produces = {
@@ -191,7 +187,7 @@ class RetrieveEngAddressServiceApiController
                 ;
     }
 
-    @Operation(summary = "Reads all cities.", description = "Reads all cities in specified state.")
+    //    @Operation(summary = "Reads all cities.", description = "Reads all cities in specified state.")
     @GetMapping(
             path = REQUEST_URI_CITIES,
             produces = {
@@ -205,10 +201,10 @@ class RetrieveEngAddressServiceApiController
                 .map(c -> model(stateName, c));
     }
 
-    @Operation(
-            summary = "Reads a city.",
-            description = "Reads a specific city in a specific state."
-    )
+    //    @Operation(
+//            summary = "Reads a city.",
+//            description = "Reads a specific city in a specific state."
+//    )
     @GetMapping(
             path = REQUEST_URI_CITY,
             produces = {
@@ -217,9 +213,9 @@ class RetrieveEngAddressServiceApiController
     )
     Mono<EntityModel<CityEngListResponse.CityEngList>> readCity(
             final ServerWebExchange exchange,
-            @Parameter(description = "the name of the state")
+//            @Parameter(description = "the name of the state")
             @PathVariable(name = PATH_NAME_STATE_NAME) final String stateName,
-            @Parameter(description = "the name of the city")
+//            @Parameter(description = "the name of the city")
             @PathVariable(name = PATH_NAME_CITY_NAME) final String cityName) {
         return cityPublisher(stateName, c -> c.getCityEngName().equals(cityName))
                 .map(c -> model(stateName, c))
@@ -383,7 +379,7 @@ class RetrieveEngAddressServiceApiController
         return EntityModel.of(content, links(stateName, cityName, roadName, content));
     }
 
-    @Operation(summary = "Reads district addresses.", description = "Reads all addresses in specified district.")
+    //    @Operation(summary = "Reads district addresses.", description = "Reads all addresses in specified district.")
     @GetMapping(
             path = REQUEST_URI_DISTRICT_ADDRESSES,
             produces = {

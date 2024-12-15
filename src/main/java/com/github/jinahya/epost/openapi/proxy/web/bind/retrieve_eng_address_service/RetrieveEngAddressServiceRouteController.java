@@ -14,15 +14,13 @@ import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_a
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_address_service.StateEngListResponse;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_address_service._RetrieveEngAddressServiceConstants;
 import com.github.jinahya.epost.openapi.proxy.web.bind._RouteController;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import org.springdoc.core.annotations.ParameterObject;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import reactor.core.publisher.Mono;
 
-@Tag(name = _RetrieveEngAddressServiceApiConstants.TAG)
+//@Tag(name = _RetrieveEngAddressServiceApiConstants.TAG)
 //@org.springframework.web.bind.annotation.RestController
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 class RetrieveEngAddressServiceRouteController
@@ -33,7 +31,9 @@ class RetrieveEngAddressServiceRouteController
                         MediaType.APPLICATION_XML_VALUE,
                         MediaType.APPLICATION_JSON_VALUE
                 })
-    Mono<StateEngListResponse> getStateList(final @ParameterObject StateEngListRequest request) {
+    Mono<StateEngListResponse> getStateList(
+//                                            @ParameterObject
+            final StateEngListRequest request) {
         throw new UnsupportedOperationException("");
     }
 
@@ -43,7 +43,9 @@ class RetrieveEngAddressServiceRouteController
                         MediaType.APPLICATION_XML_VALUE,
                         MediaType.APPLICATION_JSON_VALUE
                 })
-    Mono<CityEngListResponse> getCityList(final @ParameterObject CityEngListRequest request) {
+    Mono<CityEngListResponse> getCityList(
+//            @ParameterObject
+            final CityEngListRequest request) {
         throw new UnsupportedOperationException("");
     }
 
@@ -54,7 +56,8 @@ class RetrieveEngAddressServiceRouteController
                         MediaType.APPLICATION_JSON_VALUE
                 })
     Mono<RoadEngFirstNameListResponse> getRoadFirstNameList(
-            final @ParameterObject RoadEngFirstNameListRequest request) {
+//            @ParameterObject
+            final RoadEngFirstNameListRequest request) {
         throw new UnsupportedOperationException("");
     }
 
@@ -64,7 +67,8 @@ class RetrieveEngAddressServiceRouteController
                         MediaType.APPLICATION_JSON_VALUE
                 })
     Mono<RoadAddressEngSearchListResponse> getRoadAddressSearch(
-            final @ParameterObject RoadAddressEngSearchListRequest request) {
+//            ParameterObject
+            final RoadAddressEngSearchListRequest request) {
         throw new UnsupportedOperationException("");
     }
 
@@ -75,7 +79,8 @@ class RetrieveEngAddressServiceRouteController
                         MediaType.APPLICATION_JSON_VALUE
                 })
     Mono<DistrictEngFirstNameListResponse> getDistrictFirstNameList(
-            final @ParameterObject DistrictEngFirstNameListRequest request) {
+//             @ParameterObject
+            final DistrictEngFirstNameListRequest request) {
         throw new UnsupportedOperationException("");
     }
 
@@ -85,7 +90,8 @@ class RetrieveEngAddressServiceRouteController
                         MediaType.APPLICATION_JSON_VALUE
                 })
     Mono<LandAddressEngSearchListResponse> getLandAddressSearch(
-            final @ParameterObject LandAddressEngSearchListRequest request) {
+//            @ParameterObject
+            final LandAddressEngSearchListRequest request) {
         throw new UnsupportedOperationException("");
     }
 }

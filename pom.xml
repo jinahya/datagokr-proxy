@@ -79,15 +79,15 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi</artifactId>
-        <!-- https://search.maven.org/search?q=g:org.springdoc -->
-        <!-- https://search.maven.org/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui -->
-        <version>2.7.0</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
+<!--      <dependency>-->
+<!--        <groupId>org.springdoc</groupId>-->
+<!--        <artifactId>springdoc-openapi</artifactId>-->
+<!--        &lt;!&ndash; https://search.maven.org/search?q=g:org.springdoc &ndash;&gt;-->
+<!--        &lt;!&ndash; https://search.maven.org/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui &ndash;&gt;-->
+<!--        <version>2.7.0</version>-->
+<!--        <type>pom</type>-->
+<!--        <scope>import</scope>-->
+<!--      </dependency>-->
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-framework-bom</artifactId>
@@ -192,11 +192,11 @@
       <version>1.18.36</version>
       <scope>provided</scope>
     </dependency>
-    <dependency><!-- https://search.maven.org/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui -->
-      <groupId>org.springdoc</groupId>
-      <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
-      <scope>compile</scope>
-    </dependency>
+<!--    <dependency>&lt;!&ndash; https://search.maven.org/artifact/org.springdoc/springdoc-openapi-starter-webflux-ui &ndash;&gt;-->
+<!--      <groupId>org.springdoc</groupId>-->
+<!--      <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>-->
+<!--      <scope>compile</scope>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
