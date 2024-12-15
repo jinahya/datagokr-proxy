@@ -29,7 +29,7 @@ public final class _DownloadAreaCodeServiceConstants {
     // -----------------------------------------------------------------------------------------------------------------
 
     /**
-     * The paameter name of {@value}.
+     * The parameter name of {@value}.
      */
     public static final String PARAM_NAME_DWLD_SE = "dwldSe";
 
