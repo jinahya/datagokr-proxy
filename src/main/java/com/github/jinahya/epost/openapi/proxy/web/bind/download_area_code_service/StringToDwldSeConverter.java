@@ -1,7 +1,7 @@
 package com.github.jinahya.epost.openapi.proxy.web.bind.download_area_code_service;
 
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.download_area_code_service.AreaCodeInfoRequest;
-import com.github.jinahya.epost.openapi.proxy.web.bind.StringToEnumConverter;
+import com.github.jinahya.epost.openapi.proxy.core.convert.converter.StringToEnumConverter;
 import org.springframework.stereotype.Component;
 
 @Component
