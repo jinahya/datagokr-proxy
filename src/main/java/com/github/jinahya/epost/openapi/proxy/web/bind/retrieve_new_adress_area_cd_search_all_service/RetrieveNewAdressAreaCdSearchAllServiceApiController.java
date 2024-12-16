@@ -69,6 +69,10 @@ class RetrieveNewAdressAreaCdSearchAllServiceApiController
                         5,
                         1
                 )
+                .doOnError(t -> {
+                    log.error("failed to exchange", t);
+                })
+                .onErrorComplete()
                 .switchOnFirst((s, f) -> {
                     if (s.hasValue()) {
                         final var cmmMsgHeader = s.get().getCmmMsgHeader();
