@@ -28,6 +28,7 @@ import static org.mockito.Mockito.when;
  * Tests {@link DownloadAreaCodeServiceApiController}.
  *
  * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
+ * @see DownloadAreaCodeServiceApiController_SpringBootIT
  */
 @ContextConfiguration(classes = {
         DownloadAreaCodeServiceApiController.class

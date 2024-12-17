@@ -19,17 +19,24 @@ import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.server.core.TypeReferences;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * A class for unit-testing {@link DownloadAreaCodeServiceApiController} class.
+ *
+ * @author Jin Kwon &lt;onacit_at_gmail.com&gt;
+ * @see DownloadAreaCodeServiceApiController_SpringBootTest
+ */
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Slf4j
 class DownloadAreaCodeServiceApiController_SpringBootIT
         extends _ApiController_SpringBootIT<DownloadAreaCodeServiceApiController, DownloadAreaCodeServiceApiService> {
 
     // ----------------------------------------------------------------------------------------------- /.../areaCodeInfo
-    @DisplayName("GET /.../areaCodeInfo")
+    @DisplayName("GET " + _DownloadAreaCodeServiceApiConstants.REQUEST_URI_AREA_CODE_INFO)
     @Test
     void readAreaCodeInfo__() {
         webTestClient()
@@ -53,7 +60,7 @@ class DownloadAreaCodeServiceApiController_SpringBootIT
     }
 
     // -------------------------------------------------------------------------------------- /.../areaCodeInfo/{dwldSe}
-    @DisplayName("GET /.../areaCodeInfo/{dwldSe}")
+    @DisplayName("GET " + _DownloadAreaCodeServiceApiConstants.REQUEST_URI_DWLD_SE)
     @EnumSource(AreaCodeInfoRequest.DwldSe.class)
     @ParameterizedTest
     void readAreaCodeInfo__(final AreaCodeInfoRequest.DwldSe dwldSe) {
@@ -77,7 +84,7 @@ class DownloadAreaCodeServiceApiController_SpringBootIT
 
     // --------------------------------------------------------------------------------------- /.../{dwldSe}/fileContent
     @Disabled("takes too long, baby")
-    @DisplayName("GET /.../areaCodeInfo/{dwldSe}/fileContent")
+    @DisplayName("GET " + _DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT)
     @EnumSource(AreaCodeInfoRequest.DwldSe.class)
     @ParameterizedTest
     void readAreaCodeInfoFileContent__(final AreaCodeInfoRequest.DwldSe dwldSe) {
