@@ -50,10 +50,16 @@ class DownloadAreaCodeServiceApiController
                                 .build(request.getDwldSe().text())
                                 .toString())
                         .withSelfRel(),
+                Link.of(UriComponentsBuilder.fromPath(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE)
+                                .build(request.getDwldSe().text())
+                                .toString())
+                        .withRel(_DownloadAreaCodeServiceApiConstants.REL_FILE)
+                        .withTitle("/:file/text()"),
                 Link.of(UriComponentsBuilder.fromPath(_DownloadAreaCodeServiceApiConstants.REQUEST_URI_FILE_CONTENT)
                                 .build(request.getDwldSe().text())
                                 .toString())
                         .withRel(_DownloadAreaCodeServiceApiConstants.REL_FILE_CONTENT)
+                        .withTitle("/:file's content")
         );
     }
 

@@ -18,7 +18,6 @@ import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_a
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_address_service.StateEngListRequest;
 import com.github.jinahya.epost.openapi.proxy.cloud.gateway.route.retrieve_eng_address_service.StateEngListResponse;
 import com.github.jinahya.epost.openapi.proxy.web.bind._ApiController;
-import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -115,7 +114,8 @@ class RetrieveEngAddressServiceApiController
     @GetMapping(
             path = REQUEST_URI_STATES,
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<StateEngListResponse.StateEngList>> readStates(final ServerWebExchange exchange) {
@@ -195,7 +195,8 @@ class RetrieveEngAddressServiceApiController
     @GetMapping(
             path = REQUEST_URI_CITIES,
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<CityEngListResponse.CityEngList>> readCities(
@@ -282,7 +283,8 @@ class RetrieveEngAddressServiceApiController
     @GetMapping(
             path = _RetrieveEngAddressServiceApiConstants.REQUEST_URI_DISTRICTS,
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<DistrictEngListResponse.DistrictEngList>> readDistricts(
@@ -387,7 +389,8 @@ class RetrieveEngAddressServiceApiController
     @GetMapping(
             path = REQUEST_URI_DISTRICT_ADDRESSES,
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<LandAddressEngSearchList>> readDistrictAddresses(
@@ -451,7 +454,8 @@ class RetrieveEngAddressServiceApiController
     @GetMapping(
             path = REQUEST_URI_ROADS,
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<RoadEngListResponse.RoadEngList>> readRoads(
@@ -557,7 +561,8 @@ class RetrieveEngAddressServiceApiController
     @GetMapping(
             path = REQUEST_URI_ROAD_ADDRESSES,
             produces = {
-                    MediaType.APPLICATION_NDJSON_VALUE
+                    MediaType.APPLICATION_NDJSON_VALUE,
+                    MediaTypes.HAL_JSON_VALUE
             }
     )
     Flux<EntityModel<RoadAddressEngSearchListResponse.RoadAddressEngSearchList>> readRoadAddresses(
