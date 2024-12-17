@@ -17,6 +17,7 @@ import org.springframework.mock.web.server.MockServerWebExchange;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import static com.github.jinahya.epost.openapi.proxy.web.bind.download_area_code_service._DownloadAreaCodeServiceApiConstants.REQUEST_URI_AREA_CODE_INFO;
 import static com.github.jinahya.epost.openapi.proxy.web.bind.download_area_code_service._DownloadAreaCodeServiceApiConstants.REQUEST_URI_DWLD_SE;
@@ -72,6 +73,15 @@ class DownloadAreaCodeServiceApiController_SpringBootTest
         // -------------------------------------------------------------------------------------------------------- then
         result.doOnNext(this::validate)
                 .blockLast();
+
+        final var duration =
+                StepVerifier.create(controllerInstance().readAreaCodeInfo(exchange))
+                        .expectNextMatches(e -> e.getContent().getRequestDwldSe() == AreaCodeInfoRequest.DwldSe._1)
+                        .expectNextMatches(e -> e.getContent().getRequestDwldSe() == AreaCodeInfoRequest.DwldSe._2)
+                        .expectNextMatches(e -> e.getContent().getRequestDwldSe() == AreaCodeInfoRequest.DwldSe._3)
+                        .expectNextMatches(e -> e.getContent().getRequestDwldSe() == AreaCodeInfoRequest.DwldSe._4)
+                        .expectComplete()
+                        .verify();
     }
 
     // -----------------------------------------------------------------------------------------------------------------
@@ -100,5 +110,10 @@ class DownloadAreaCodeServiceApiController_SpringBootTest
         // -------------------------------------------------------------------------------------------------------- then
         result.doOnNext(this::validate)
                 .block();
+
+        final var duration = StepVerifier.create(controllerInstance().readAreaCodeInfo(exchange, dwldSe))
+                .expectNextMatches(e -> e.getContent().getRequestDwldSe() == dwldSe)
+                .expectComplete()
+                .verify();
     }
 }
