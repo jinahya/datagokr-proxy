@@ -143,6 +143,9 @@ See [epost-openapi-proxy-sample-application](https://github.com/onacit/epost-ope
     * [Route Configuration Not Merging from Imported YAML Files](https://github.com/spring-cloud/spring-cloud-gateway/issues/3098)
     * [#3466 AddRequestParameter double encodes parameter value](https://github.com/spring-cloud/spring-cloud-gateway/issues/3466)
     * [#3474 Forwarding route produces error at the first request](https://github.com/spring-cloud/spring-cloud-gateway/issues/3474)
+    * [Actuator endpoint with Springdoc circular references #3111](https://github.com/spring-cloud/spring-cloud-gateway/issues/3111)
+* [springdoc/springdoc-openapi](https://github.com/springdoc/springdoc-openapi)
+    * [An unresolvable circular reference with management.endpoint.gateway.enabled=true #2814](https://github.com/springdoc/springdoc-openapi/issues/2814) 
 * [tdf/odftoolkit](https://github.com/tdf/odftoolkit)
 
 ### [ODFDOM - The OpenDocument API](https://odftoolkit.org/odfdom/index.html)
