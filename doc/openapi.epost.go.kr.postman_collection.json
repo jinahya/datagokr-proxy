@@ -59,598 +59,23 @@
 					"name": "우편번호 DB 다운로드 서비스",
 					"item": [
 						{
-							"name": "api",
-							"item": [
-								{
-									"name": "areaCodeInfo",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "X-Forwarded-For",
-												"value": "a.com, b.com",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "X-Fowarded-Host",
-												"value": "id42.example-cdn.com",
-												"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											]
-										},
-										"description": "모든 {dwldSe} 에 대한 areaCodeInfo 를 조회한다."
-									},
-									"response": []
-								},
-								{
-									"name": "areaCodeInfo/:dwldSe",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "X-Forwarded-For",
-												"value": "a.com, b.com",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "X-Fowarded-Host",
-												"value": "id42.example-cdn.com",
-												"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/::dwldSe",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"::dwldSe"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": ":dwldSe",
-													"value": "1"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> areaCodeInfo/1",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "X-Forwarded-For",
-												"value": "a.com, b.com",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "X-Fowarded-Host",
-												"value": "id42.example-cdn.com",
-												"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/1",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"1"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> areaCodeInfo/2",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "X-Forwarded-For",
-												"value": "a.com, b.com",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "X-Fowarded-Host",
-												"value": "id42.example-cdn.com",
-												"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/2",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"2"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> areaCodeInfo/3",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "X-Forwarded-For",
-												"value": "a.com, b.com",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "X-Fowarded-Host",
-												"value": "id42.example-cdn.com",
-												"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/3",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"3"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> areaCodeInfo/4",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "X-Forwarded-For",
-												"value": "a.com, b.com",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "X-Fowarded-Host",
-												"value": "id42.example-cdn.com",
-												"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/4",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"4"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "areaCodeInfo/:dwldSe/fileContent",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/octet-stream",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.oasis.opendocument.spreadsheet",
-												"description": ".ods",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-												"description": ".xlsx",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/::dwldSe/content?attachment=true&filename=가나다.zip",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"::dwldSe",
-												"content"
-											],
-											"query": [
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "attachment",
-													"value": "true"
-												},
-												{
-													"key": "filename",
-													"value": "가나다.zip"
-												},
-												{
-													"key": "filename",
-													"value": "a.zip",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": ":dwldSe",
-													"value": "4"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> areaCodeInfo/1/fileContent",
-									"request": {
-										"method": "HEAD",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/octet-stream",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.oasis.opendocument.spreadsheet",
-												"description": ".ods",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-												"description": ".xlsx",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/1/fileContent?attach=true&filename=가나다.zip",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"1",
-												"fileContent"
-											],
-											"query": [
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "attach",
-													"value": "true"
-												},
-												{
-													"key": "filename",
-													"value": "가나다.zip"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> areaCodeInfo/2/fileContent",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/octet-stream",
-												"type": "text"
-											},
-											{
-												"key": "Accept",
-												"value": "application/zip",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.oasis.opendocument.spreadsheet",
-												"description": ".ods",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-												"description": ".xlsx",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/2/fileContent?attach=true&filename=가나다.zip",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"2",
-												"fileContent"
-											],
-											"query": [
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "attach",
-													"value": "true"
-												},
-												{
-													"key": "filename",
-													"value": "가나다.zip"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> areaCodeInfo/3/fileContent",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/octet-stream",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.oasis.opendocument.spreadsheet",
-												"description": ".ods",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-												"description": ".xlsx",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/3/fileContent?attach=true&filename=가나다.zip",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"3",
-												"fileContent"
-											],
-											"query": [
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "attach",
-													"value": "true"
-												},
-												{
-													"key": "filename",
-													"value": "가나다.zip"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> areaCodeInfo/4/fileContent",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/octet-stream",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.oasis.opendocument.spreadsheet",
-												"description": ".ods",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-												"description": ".xlsx",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/4/fileContent?attach=true&filename=가나다.zip",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"downloadAreaCodeService",
-												"areaCodeInfo",
-												"4",
-												"fileContent"
-											],
-											"query": [
-												{
-													"key": "serviceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												},
-												{
-													"key": "attach",
-													"value": "true"
-												},
-												{
-													"key": "filename",
-													"value": "가나다.zip"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
 							"name": "우편번호 DB 다운로드 서비스",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/xml",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
 								"url": {
 									"raw": "{{base-url}}/postal/downloadAreaCodeService/downloadAreaCodeService/getAreaCodeInfo?serviceKey={{service-key}}&dwldSe=1",
 									"host": [
@@ -710,7 +135,8 @@
 									{
 										"key": "Accept",
 										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									},
 									{
 										"key": "Cache-Control",
@@ -720,7 +146,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base-url}}/postal/downloadAreaCodeService/downloadAreaCodeService/getAreaCodeInfo?serviceKey={{service-key}}&dwldSe=1",
+									"raw": "{{base-url}}/postal/downloadAreaCodeService/downloadAreaCodeService/getAreaCodeInfo?dwldSe=1",
 									"host": [
 										"{{base-url}}"
 									],
@@ -738,7 +164,8 @@
 										},
 										{
 											"key": "serviceKey",
-											"value": "{{service-key}}"
+											"value": "{{service-key}}",
+											"disabled": true
 										},
 										{
 											"key": "dwldSe",
@@ -895,1418 +322,6 @@
 				{
 					"name": "영문 우편번호 조회 서비스",
 					"item": [
-						{
-							"name": "api",
-							"item": [
-								{
-									"name": "states",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"const accept = pm.request.headers.one('Accept').value;",
-													"console.log('Accept: ' + accept + (typeof accept));",
-													"",
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/hal+json\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/hal+json');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName/cities",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> states/Seoul/cities",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Seoul"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName/cities/:cityName",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/hal+json\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/hal+json');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName/cities/:cityName/roads",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"roads"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> states/Seoul/cities/Dobong-gu/roads",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"roads"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Seoul"
-												},
-												{
-													"key": "cityName",
-													"value": "Dobong-gu"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName/cities/:cityName/roads/:roadName",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"roads",
-												":roadName"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												},
-												{
-													"key": "roadName",
-													"value": "Daeho-gil"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> states/Jeollanam-do/cities/Naju-si/roads/Daeho-gil",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"roads",
-												":roadName"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												},
-												{
-													"key": "roadName",
-													"value": "Daeho-gil"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName/cities/cityName/roads/:roadName/addresses",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName/addresses",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"roads",
-												":roadName",
-												"addresses"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												},
-												{
-													"key": "roadName",
-													"value": "Daeho-gil"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> /states/Jeollanam-do/cities/Naju-si/roads/Daeho-gil/addresses",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName/addresses",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"roads",
-												":roadName",
-												"addresses"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												},
-												{
-													"key": "roadName",
-													"value": "Daeho-gil"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> /states/Jeju-do/cities/Jeju-si/roads/Yewonnam 2-gil/addresses",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName/addresses",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"roads",
-												":roadName",
-												"addresses"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeju-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Jeju-si"
-												},
-												{
-													"key": "roadName",
-													"value": "Yewonnam 2-gil"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName/cities/:cityName/districts",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"districts"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> states/Jeollanam-do/cities/Naju-si/districts",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"districts"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName/cities/:cityName/districts/:districtName",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts/:districtName",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"districts",
-												":districtName"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												},
-												{
-													"key": "districtName",
-													"value": "Daeho-dong"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> states/Jeollanam-do/cities/Naju-si/districts/Daeho-dong",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts/:districtName",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"districts",
-												":districtName"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												},
-												{
-													"key": "districtName",
-													"value": "Daeho-dong"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "states/:stateName/cities/:cityName/districts/:districtName/addresses",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts/:districtName/addresses",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"districts",
-												":districtName",
-												"addresses"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												},
-												{
-													"key": "districtName",
-													"value": "Daeho-dong"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> states/Jeollanam-do/cities/Naju-si/districts/Daeho-dong/addresses",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts/:districtName/addresses",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveEngAddressService",
-												"states",
-												":stateName",
-												"cities",
-												":cityName",
-												"districts",
-												":districtName",
-												"addresses"
-											],
-											"query": [
-												{
-													"key": "ServiceKey",
-													"value": "{{service-key}}",
-													"disabled": true
-												}
-											],
-											"variable": [
-												{
-													"key": "stateName",
-													"value": "Jeollanam-do"
-												},
-												{
-													"key": "cityName",
-													"value": "Naju-si"
-												},
-												{
-													"key": "districtName",
-													"value": "Daeho-dong"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
 						{
 							"name": "광역시/도 조회",
 							"event": [
@@ -2555,11 +570,12 @@
 									{
 										"key": "Accept",
 										"value": "application/json",
-										"type": "text"
+										"type": "text",
+										"disabled": true
 									}
 								],
 								"url": {
-									"raw": "{{base-url}}/postal/retrieveEngAddressService/retrieveEngAddressService/getRoadAddressSearch?stateEngName=Jeollanam-do&cityEngName=Naju-si&roadEngName=Daeho-gil&countPerPage=32&currentPage=2",
+									"raw": "{{base-url}}/postal/retrieveEngAddressService/retrieveEngAddressService/getRoadAddressSearch?serviceKey={{service-key}}&stateEngName=Jeollanam-do&cityEngName=Naju-si&roadEngName=Daeho-gil&countPerPage=32&currentPage=2",
 									"host": [
 										"{{base-url}}"
 									],
@@ -2572,8 +588,7 @@
 									"query": [
 										{
 											"key": "serviceKey",
-											"value": "{{service-key}}",
-											"disabled": true
+											"value": "{{service-key}}"
 										},
 										{
 											"key": "stateEngName",
@@ -2785,190 +800,6 @@
 					"name": "통합검색 5자리 우편번호 조회서비스",
 					"item": [
 						{
-							"name": "api",
-							"item": [
-								{
-									"name": "search",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Status code is 200\", () => {",
-													"    pm.expect(pm.response.code).to.eql(200);",
-													"});",
-													"pm.test(\"Content-Type header is present\", () => {",
-													"  pm.response.to.have.header(\"Content-Type\");",
-													"});",
-													"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
-													"});",
-													""
-												],
-												"type": "text/javascript",
-												"packages": {}
-											}
-										}
-									],
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveNewAdressAreaCdSearchAllService/search?srchwrd=세종로 17",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveNewAdressAreaCdSearchAllService",
-												"search"
-											],
-											"query": [
-												{
-													"key": "srchwrd",
-													"value": "세종로 17"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> search 세종로 17",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveNewAdressAreaCdSearchAllService/search?srchwrd=세종로 17",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveNewAdressAreaCdSearchAllService",
-												"search"
-											],
-											"query": [
-												{
-													"key": "srchwrd",
-													"value": "세종로 17"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> search 주월동 408-1",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveNewAdressAreaCdSearchAllService/search?srchwrd=주월동 408-1",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveNewAdressAreaCdSearchAllService",
-												"search"
-											],
-											"query": [
-												{
-													"key": "srchwrd",
-													"value": "주월동 408-1"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> search 61725",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Cache-Control",
-												"value": "no-cache",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveNewAdressAreaCdSearchAllService/search?srchwrd=61725",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveNewAdressAreaCdSearchAllService",
-												"search"
-											],
-											"query": [
-												{
-													"key": "srchwrd",
-													"value": "61725"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
 							"name": "통합검색 5자리 우편번호 조회서비스",
 							"event": [
 								{
@@ -3001,7 +832,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base-url}}/postal/retrieveNewAdressAreaCdSearchAllService/retrieveNewAdressAreaCdSearchAllService/getNewAddressListAreaCdSearchAll?srchwrd=세종로 17&currentPage=1&countPerPage=2",
+									"raw": "{{base-url}}/postal/retrieveNewAdressAreaCdSearchAllService/retrieveNewAdressAreaCdSearchAllService/getNewAddressListAreaCdSearchAll?serviceKey={{service-key}}&srchwrd=61725&currentPage=1&countPerPage=32",
 									"host": [
 										"{{base-url}}"
 									],
@@ -3014,12 +845,12 @@
 									"query": [
 										{
 											"key": "serviceKey",
-											"value": "{{service-key}}",
-											"disabled": true
+											"value": "{{service-key}}"
 										},
 										{
 											"key": "srchwrd",
-											"value": "세종로 17"
+											"value": "세종로 17",
+											"disabled": true
 										},
 										{
 											"key": "srchwrd",
@@ -3028,8 +859,7 @@
 										},
 										{
 											"key": "srchwrd",
-											"value": "61725",
-											"disabled": true
+											"value": "61725"
 										},
 										{
 											"key": "currentPage",
@@ -3038,7 +868,7 @@
 										},
 										{
 											"key": "countPerPage",
-											"value": "2"
+											"value": "32"
 										}
 									]
 								}
@@ -3216,167 +1046,6 @@
 					"name": "새주소 5자리 우편번호 조회서비스",
 					"item": [
 						{
-							"name": "api",
-							"item": [
-								{
-									"name": ":searchSe/:srchwrd",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveNewAdressAreaCdService/:searchSe/:srchwrd",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveNewAdressAreaCdService",
-												":searchSe",
-												":srchwrd"
-											],
-											"variable": [
-												{
-													"key": "searchSe",
-													"value": ""
-												},
-												{
-													"key": "srchwrd",
-													"value": ""
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> dong/주월동 408-1",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text"
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveNewAdressAreaCdService/:searchSe/:srchwrd",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveNewAdressAreaCdService",
-												":searchSe",
-												":srchwrd"
-											],
-											"variable": [
-												{
-													"key": "searchSe",
-													"value": "dong"
-												},
-												{
-													"key": "srchwrd",
-													"value": "주월동 408-1"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> road/세종로 17",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveNewAdressAreaCdService/:searchSe/:srchwrd",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveNewAdressAreaCdService",
-												":searchSe",
-												":srchwrd"
-											],
-											"variable": [
-												{
-													"key": "searchSe",
-													"value": "road"
-												},
-												{
-													"key": "srchwrd",
-													"value": "세종로 17"
-												}
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "> post/61725",
-									"request": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/x-ndjson",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "Accept",
-												"value": "application/hal+json",
-												"type": "text"
-											}
-										],
-										"url": {
-											"raw": "{{base-url}}/api/retrieveNewAdressAreaCdService/:searchSe/:srchwrd",
-											"host": [
-												"{{base-url}}"
-											],
-											"path": [
-												"api",
-												"retrieveNewAdressAreaCdService",
-												":searchSe",
-												":srchwrd"
-											],
-											"variable": [
-												{
-													"key": "searchSe",
-													"value": "post"
-												},
-												{
-													"key": "srchwrd",
-													"value": "61725"
-												}
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
 							"name": "새주소 5자리 우편번호 조회서비스",
 							"request": {
 								"method": "GET",
@@ -3395,7 +1064,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{base-url}}/postal/retrieveNewAdressAreaCdService/retrieveNewAdressAreaCdService/getNewAddressListAreaCd?searchSe=road&srchwrd=세종로 17&countPerPage=3&currentPage=1",
+									"raw": "{{base-url}}/postal/retrieveNewAdressAreaCdService/retrieveNewAdressAreaCdService/getNewAddressListAreaCd?serviceKey={{service-key}}&searchSe=road&srchwrd=세종로 17&countPerPage=3&currentPage=1",
 									"host": [
 										"{{base-url}}"
 									],
@@ -3408,8 +1077,7 @@
 									"query": [
 										{
 											"key": "serviceKey",
-											"value": "{{service-key}}",
-											"disabled": true
+											"value": "{{service-key}}"
 										},
 										{
 											"key": "searchSe",
@@ -4290,6 +1958,2356 @@
 									"response": []
 								}
 							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "downloadAreaCodeService",
+					"item": [
+						{
+							"name": "areaCodeInfo",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "a.com, b.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-Fowarded-Host",
+										"value": "id42.example-cdn.com",
+										"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									]
+								},
+								"description": "모든 {dwldSe} 에 대한 areaCodeInfo 를 조회한다."
+							},
+							"response": []
+						},
+						{
+							"name": "areaCodeInfo/:dwldSe",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "a.com, b.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-Fowarded-Host",
+										"value": "id42.example-cdn.com",
+										"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/::dwldSe",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"::dwldSe"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": ":dwldSe",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> areaCodeInfo/1",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "a.com, b.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-Fowarded-Host",
+										"value": "id42.example-cdn.com",
+										"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/1",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"1"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> areaCodeInfo/2",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "a.com, b.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-Fowarded-Host",
+										"value": "id42.example-cdn.com",
+										"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/2",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"2"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> areaCodeInfo/3",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "a.com, b.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-Fowarded-Host",
+										"value": "id42.example-cdn.com",
+										"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/3",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"3"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> areaCodeInfo/4",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Forwarded-For",
+										"value": "a.com, b.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "X-Fowarded-Host",
+										"value": "id42.example-cdn.com",
+										"description": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Host",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/4",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"4"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "areaCodeInfo/:dwldSe/fileContent",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/octet-stream",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.oasis.opendocument.spreadsheet",
+										"description": ".ods",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+										"description": ".xlsx",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/::dwldSe/content?attachment=true&filename=가나다.zip",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"::dwldSe",
+										"content"
+									],
+									"query": [
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "attachment",
+											"value": "true"
+										},
+										{
+											"key": "filename",
+											"value": "가나다.zip"
+										},
+										{
+											"key": "filename",
+											"value": "a.zip",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": ":dwldSe",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> areaCodeInfo/1/fileContent",
+							"request": {
+								"method": "HEAD",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/octet-stream",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.oasis.opendocument.spreadsheet",
+										"description": ".ods",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+										"description": ".xlsx",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/1/fileContent?attach=true&filename=가나다.zip",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"1",
+										"fileContent"
+									],
+									"query": [
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "attach",
+											"value": "true"
+										},
+										{
+											"key": "filename",
+											"value": "가나다.zip"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> areaCodeInfo/2/fileContent",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/octet-stream",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/zip",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.oasis.opendocument.spreadsheet",
+										"description": ".ods",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+										"description": ".xlsx",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/2/fileContent?attach=true&filename=가나다.zip",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"2",
+										"fileContent"
+									],
+									"query": [
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "attach",
+											"value": "true"
+										},
+										{
+											"key": "filename",
+											"value": "가나다.zip"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> areaCodeInfo/3/fileContent",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/octet-stream",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.oasis.opendocument.spreadsheet",
+										"description": ".ods",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+										"description": ".xlsx",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/3/fileContent?attach=true&filename=가나다.zip",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"3",
+										"fileContent"
+									],
+									"query": [
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "attach",
+											"value": "true"
+										},
+										{
+											"key": "filename",
+											"value": "가나다.zip"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> areaCodeInfo/4/fileContent",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/octet-stream",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.oasis.opendocument.spreadsheet",
+										"description": ".ods",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+										"description": ".xlsx",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/downloadAreaCodeService/areaCodeInfo/4/fileContent?attach=true&filename=가나다.zip",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"downloadAreaCodeService",
+										"areaCodeInfo",
+										"4",
+										"fileContent"
+									],
+									"query": [
+										{
+											"key": "serviceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										},
+										{
+											"key": "attach",
+											"value": "true"
+										},
+										{
+											"key": "filename",
+											"value": "가나다.zip"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "retrieveEngAddressService",
+					"item": [
+						{
+							"name": "states",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const accept = pm.request.headers.one('Accept').value;",
+											"console.log('Accept: ' + accept + (typeof accept));",
+											"",
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/hal+json\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/hal+json');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName/cities",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> states/Seoul/cities",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Seoul"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName/cities/:cityName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/hal+json\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/hal+json');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName/cities/:cityName/roads",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"roads"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> states/Seoul/cities/Dobong-gu/roads",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"roads"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Seoul"
+										},
+										{
+											"key": "cityName",
+											"value": "Dobong-gu"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName/cities/:cityName/roads/:roadName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"roads",
+										":roadName"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										},
+										{
+											"key": "roadName",
+											"value": "Daeho-gil"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> states/Jeollanam-do/cities/Naju-si/roads/Daeho-gil",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"roads",
+										":roadName"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										},
+										{
+											"key": "roadName",
+											"value": "Daeho-gil"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName/cities/cityName/roads/:roadName/addresses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName/addresses",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"roads",
+										":roadName",
+										"addresses"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										},
+										{
+											"key": "roadName",
+											"value": "Daeho-gil"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> /states/Jeollanam-do/cities/Naju-si/roads/Daeho-gil/addresses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName/addresses",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"roads",
+										":roadName",
+										"addresses"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										},
+										{
+											"key": "roadName",
+											"value": "Daeho-gil"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> /states/Jeju-do/cities/Jeju-si/roads/Yewonnam 2-gil/addresses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/roads/:roadName/addresses",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"roads",
+										":roadName",
+										"addresses"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeju-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Jeju-si"
+										},
+										{
+											"key": "roadName",
+											"value": "Yewonnam 2-gil"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName/cities/:cityName/districts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"districts"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> states/Jeollanam-do/cities/Naju-si/districts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"districts"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName/cities/:cityName/districts/:districtName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts/:districtName",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"districts",
+										":districtName"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										},
+										{
+											"key": "districtName",
+											"value": "Daeho-dong"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> states/Jeollanam-do/cities/Naju-si/districts/Daeho-dong",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts/:districtName",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"districts",
+										":districtName"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										},
+										{
+											"key": "districtName",
+											"value": "Daeho-dong"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "states/:stateName/cities/:cityName/districts/:districtName/addresses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts/:districtName/addresses",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"districts",
+										":districtName",
+										"addresses"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										},
+										{
+											"key": "districtName",
+											"value": "Daeho-dong"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> states/Jeollanam-do/cities/Naju-si/districts/Daeho-dong/addresses",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveEngAddressService/states/:stateName/cities/:cityName/districts/:districtName/addresses",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveEngAddressService",
+										"states",
+										":stateName",
+										"cities",
+										":cityName",
+										"districts",
+										":districtName",
+										"addresses"
+									],
+									"query": [
+										{
+											"key": "ServiceKey",
+											"value": "{{service-key}}",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "stateName",
+											"value": "Jeollanam-do"
+										},
+										{
+											"key": "cityName",
+											"value": "Naju-si"
+										},
+										{
+											"key": "districtName",
+											"value": "Daeho-dong"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "retrieveNewAdressAreaCdSearchAllService",
+					"item": [
+						{
+							"name": "search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", () => {",
+											"    pm.expect(pm.response.code).to.eql(200);",
+											"});",
+											"pm.test(\"Content-Type header is present\", () => {",
+											"  pm.response.to.have.header(\"Content-Type\");",
+											"});",
+											"pm.test(\"Content-Type header is application/x-ndjson\", () => {",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.include('application/x-ndjson');",
+											"});",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveNewAdressAreaCdSearchAllService/search?srchwrd=세종로 17",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveNewAdressAreaCdSearchAllService",
+										"search"
+									],
+									"query": [
+										{
+											"key": "srchwrd",
+											"value": "세종로 17"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> search 세종로 17",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveNewAdressAreaCdSearchAllService/search?srchwrd=세종로 17",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveNewAdressAreaCdSearchAllService",
+										"search"
+									],
+									"query": [
+										{
+											"key": "srchwrd",
+											"value": "세종로 17"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> search 주월동 408-1",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveNewAdressAreaCdSearchAllService/search?srchwrd=주월동 408-1",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveNewAdressAreaCdSearchAllService",
+										"search"
+									],
+									"query": [
+										{
+											"key": "srchwrd",
+											"value": "주월동 408-1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> search 61725",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Cache-Control",
+										"value": "no-cache",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveNewAdressAreaCdSearchAllService/search?srchwrd=61725",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveNewAdressAreaCdSearchAllService",
+										"search"
+									],
+									"query": [
+										{
+											"key": "srchwrd",
+											"value": "61725"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "retrieveNewAdressAreaCdService",
+					"item": [
+						{
+							"name": ":searchSe/:srchwrd",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveNewAdressAreaCdService/:searchSe/:srchwrd",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveNewAdressAreaCdService",
+										":searchSe",
+										":srchwrd"
+									],
+									"variable": [
+										{
+											"key": "searchSe",
+											"value": ""
+										},
+										{
+											"key": "srchwrd",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> dong/주월동 408-1",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveNewAdressAreaCdService/:searchSe/:srchwrd",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveNewAdressAreaCdService",
+										":searchSe",
+										":srchwrd"
+									],
+									"variable": [
+										{
+											"key": "searchSe",
+											"value": "dong"
+										},
+										{
+											"key": "srchwrd",
+											"value": "주월동 408-1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> road/세종로 17",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveNewAdressAreaCdService/:searchSe/:srchwrd",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveNewAdressAreaCdService",
+										":searchSe",
+										":srchwrd"
+									],
+									"variable": [
+										{
+											"key": "searchSe",
+											"value": "road"
+										},
+										{
+											"key": "srchwrd",
+											"value": "세종로 17"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "> post/61725",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/x-ndjson",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/hal+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base-url}}/api/retrieveNewAdressAreaCdService/:searchSe/:srchwrd",
+									"host": [
+										"{{base-url}}"
+									],
+									"path": [
+										"api",
+										"retrieveNewAdressAreaCdService",
+										":searchSe",
+										":srchwrd"
+									],
+									"variable": [
+										{
+											"key": "searchSe",
+											"value": "post"
+										},
+										{
+											"key": "srchwrd",
+											"value": "61725"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}

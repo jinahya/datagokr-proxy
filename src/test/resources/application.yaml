@@ -5,8 +5,8 @@ epost:
 
 management:
   endpoint:
-#    gateway:
-#      enabled: true # https://github.com/spring-cloud/spring-cloud-gateway/issues/3111
+    gateway:
+      enabled: true # https://github.com/spring-cloud/spring-cloud-gateway/issues/3111
     health:
       show-details: always
   endpoints:
