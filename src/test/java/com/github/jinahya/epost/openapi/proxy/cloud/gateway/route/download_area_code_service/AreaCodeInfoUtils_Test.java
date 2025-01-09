@@ -34,10 +34,10 @@ class AreaCodeInfoUtils_Test {
 
     private static Stream<String> getResNameStream() {
         return Stream.of(
-                "_zipcode_DB.zip",
-                "_areacd_chgaddr_DB.zip",
-                "_areacd_rangeaddr_DB.zip",
-                "_areacd_pobox_DB.zip"
+                "zipcode_DB.zip",
+                "areacd_chgaddr_DB.zip",
+                "areacd_rangeaddr_DB.zip",
+                "areacd_pobox_DB.zip"
         );
     }
 
